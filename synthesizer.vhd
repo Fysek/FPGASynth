@@ -7,13 +7,26 @@ use IEEE.numeric_std.all;
 
 entity synthesizer is 
 	port( 
+			-----------------------main-----------------------------------
 			clk            		: in  std_logic							;
-			reset            		: in  std_logic							;
+			reset            		: in  std_logic							;--async reset button
+			--------------------------------------------------------------
+			-----------------------uart-----------------------------------
 			uart_rx       			: in  std_logic							;
-			datap   					: out  std_logic_vector(2 downto 0)	;
-			datan   					: out  std_logic_vector(2 downto 0)	;
-			clkp          			: out  std_logic							;
-			clkn						: out  std_logic
+			--------------------------------------------------------------
+			-----------------------hex2seg--------------------------------
+			disp_seg 				: out std_logic_vector(7 downto 0)		;
+			--------------------------------------------------------------
+			-----------------------buttons--------------------------------
+			button_l				: in  std_logic							;
+			button_r				: in  std_logic							;
+			--------------------------------------------------------------
+			-----------------------hdmi-----------------------------------
+			datap   				: out  std_logic_vector(2 downto 0)		;
+			datan   				: out  std_logic_vector(2 downto 0)		;
+			clkp          			: out  std_logic						;
+			clkn					: out  std_logic
+			--------------------------------------------------------------
 	    );
 end entity;
 
@@ -33,14 +46,14 @@ architecture synthesizer_arch of synthesizer is
 			reset            		: in  std_logic							;
 			midi_in					: in  std_logic_vector(23 downto 0) ;
 			note_on  				: out  std_logic_vector(1 downto 0) ;					
-			frequency 				: out  std_logic_vector(7 downto 0) ;
+			note_id 				: out  std_logic_vector(7 downto 0) ;
 			velocity         		: out  std_logic_vector(7 downto 0)
 			);
 	end component;
 ----------------------------------------------------------------------
 			signal midi_out 		: std_logic_vector(23 downto 0)		;
 			signal note_on 		: std_logic_vector(1 downto 0)		;
-			signal frequency 		: std_logic_vector(7 downto 0)		;
+			signal note_id 		: std_logic_vector(7 downto 0)		;
 			signal velocity 		: std_logic_vector(7 downto 0)		;
 ----------------------------------------------------------------------	
 	begin
@@ -59,7 +72,7 @@ architecture synthesizer_arch of synthesizer is
 				reset    	=> reset 		,
 				midi_in		=> midi_out		,
 				note_on  	=> note_on		,
-				frequency	=> frequency	,
+				note_id		=> note_id		,
 				velocity 	=> velocity	
 			
 			);
