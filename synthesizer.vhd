@@ -13,6 +13,7 @@ entity synthesizer is
 			--------------------------------------------------------------
 			-----------------------uart-----------------------------------
 			uart_rx       			: in  std_logic							;
+			midi_in 					: in std_logic_vector(23 downto 0)	;
 			--------------------------------------------------------------
 			-----------------------hex2seg--------------------------------
 			disp_seg 				: out std_logic_vector(7 downto 0)		;
@@ -24,21 +25,21 @@ entity synthesizer is
 			-----------------------hdmi-----------------------------------
 			datap   				: out  std_logic_vector(2 downto 0)		;
 			datan   				: out  std_logic_vector(2 downto 0)		;
-			clkp          			: out  std_logic						;
+			clkp          		: out  std_logic						;
 			clkn					: out  std_logic
 			--------------------------------------------------------------
 	    );
 end entity;
 
 architecture synthesizer_arch of synthesizer is
-	component midi_buffer is
-		port(
-				clk            	: in  std_logic							;
-				reset            	: in  std_logic							;
-				data_in      		: in  std_logic							;
-				midi_out   			: out  std_logic_vector(23 downto 0)
-			);
-	end component;
+	--component midi_buffer is
+	--	port(
+	--			clk            	: in  std_logic							;
+	--			reset            	: in  std_logic							;
+	--			data_in      		: in  std_logic							;
+	--			midi_out   			: out  std_logic_vector(23 downto 0)
+	--		);
+	--end component;
 	
 	component midi_decoder is
 		port(
@@ -46,35 +47,103 @@ architecture synthesizer_arch of synthesizer is
 			reset            		: in  std_logic							;
 			midi_in					: in  std_logic_vector(23 downto 0) ;
 			note_on  				: out  std_logic_vector(1 downto 0) ;					
-			note_id 				: out  std_logic_vector(7 downto 0) ;
+			note_id 					: out  std_logic_vector(7 downto 0) ;
 			velocity         		: out  std_logic_vector(7 downto 0)
 			);
 	end component;
+	
+	component synth_lpcm	is
+		port( 
+			clk            		: in  std_logic;
+			reset            		: in  std_logic;
+			-----------------------button---------------------------------
+			out_function       		: in std_logic_vector(7 downto 0);
+			-----------------------midi-----------------------------------
+			note_on      			: in  std_logic_vector(1 downto 0);
+			note_id                 : in  std_logic_vector(7 downto 0);
+			velocity                : in  std_logic_vector(7 downto 0); 
+			--------------------------------------------------------------
+			audio_data_square		: in   integer;
+			audio_data_saw			: in   integer;
+			audio_data_triangle		: in   integer;
+			audio_data_sine			: in   integer;
+			-----------------------hex2seg--------------------------------
+			num      				: out  std_logic_vector(3 downto 0);
+			dp       				: out  std_logic;
+			--------------------------------------------------------------
+			);
+	end entity
+	
+	component square is
+		port(
+			clk            		: in  std_logic							;
+			reset            		: in  std_logic							;
+			note_id          		: in  std_logic_vector(7 downto 0);
+			out_data				: out integer
+			);
+	end component;
+	
+	component saw is
+		port( 
+			clk            		: in  std_logic;
+			reset            		: in  std_logic;
+			note_id          		: in  std_logic_vector(7 downto 0);
+			out_data				: out integer
+	    );
+	end component;
+
+	component triangle is 
+		port( 
+			clk            		: in  std_logic;
+			reset            		: in  std_logic;
+			note_id          		: in  std_logic_vector(7 downto 0);
+			out_data				: out integer
+			);
+	end component;
+	
+	
+	
+	component buttons is
+		port(
+			clk       			: in  std_logic;
+			reset     			: in  std_logic;
+			button_l 			: in  std_logic;
+			button_r 			: in  std_logic;
+			out_function       	: out std_logic_vector(7 downto 0)
+			);
+	end component;
+
+	
 ----------------------------------------------------------------------
-			signal midi_out 		: std_logic_vector(23 downto 0)		;
 			signal note_on 		: std_logic_vector(1 downto 0)		;
 			signal note_id 		: std_logic_vector(7 downto 0)		;
 			signal velocity 		: std_logic_vector(7 downto 0)		;
 ----------------------------------------------------------------------	
 	begin
 	
-	MIDI_BUFFER_INST : midi_buffer
-			port map(	
-				clk     	=> clk		,	
-				reset   	=> reset 	,	
-				data_in 	=> uart_rx	,	
-				midi_out	=> midi_out		
-			);
+	--MIDI_BUFFER_INST : midi_buffer
+	--		port map(	
+	--			clk     	=> clk		,	
+	--			reset   	=> reset 	,	
+	--			data_in 	=> uart_rx	,	
+	--			midi_out	=> midi_out		
+	--		);
 			
 	MIDI_DECODER_INST : midi_decoder
 			port map(
 				clk    		=> clk 			,
 				reset    	=> reset 		,
-				midi_in		=> midi_out		,
+				midi_in		=> midi_in		,
 				note_on  	=> note_on		,
 				note_id		=> note_id		,
 				velocity 	=> velocity	
 			
 			);
+			
+	SYNTH_LPCM_INST : synth_lpcm
+			port map(
+			);
+			
+------------------waves-----------
 	
 end architecture;
