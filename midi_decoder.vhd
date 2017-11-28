@@ -28,9 +28,9 @@ begin
 			elsif (clk'event and clk='1') then
 				note_id <= midi_in(15 downto 8);
 				velocity <= midi_in(7 downto 0);
-				if (midi_in(23 downto 16) = "1001") then
+				if (midi_in(23 downto 20) = "1001") then
 					note_on <= "11";
-				elsif(midi_in(23 downto 16) = "1000") then
+				elsif(midi_in(23 downto 20) = "1000") then
 					note_on <= "10";
 				else
 					note_on <= "00";

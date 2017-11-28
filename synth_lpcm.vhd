@@ -16,11 +16,7 @@ entity synth_lpcm is
 			note_id                 : in  std_logic_vector(7 downto 0);
 			velocity                : in  std_logic_vector(7 downto 0); 
 			--------------------------------------------------------------
-			synth_mode				: out  std_logic_vector(7 downto 0);
-			-----------------------hex2seg--------------------------------
-			num      				: out  std_logic_vector(3 downto 0);
-			dp       				: out  std_logic;
-			--------------------------------------------------------------
+			synth_mode				: out  std_logic_vector(7 downto 0)
 	    );
 end entity;
 

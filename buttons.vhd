@@ -10,7 +10,7 @@ entity buttons is
 		reset     			: in  std_logic;
 		button_l 			: in  std_logic;
 		button_r 			: in  std_logic;
-		out_function       	: out std_logic_vector(7 downto 0)
+		out_function       	: out std_logic_vector(3 downto 0)
 	);
 end entity;
 
