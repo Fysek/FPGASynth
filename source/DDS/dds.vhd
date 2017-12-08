@@ -38,7 +38,7 @@ component note_to_pa is
 	);
 end component;
 
-component phaseaccum_entity 
+component phaseaccum 
 	generic(
 			max_length 		: integer := 2147483647;
 			lut_bit_width 	: integer := 8;
@@ -53,7 +53,7 @@ component phaseaccum_entity
 end component;
 
 
-component sinelut_entity is
+component sinelut is
 	generic(
 			lut_bit_width : integer := 8
 	);
@@ -65,7 +65,7 @@ component sinelut_entity is
 	);
 end component;
 
-component pulselut_entity is
+component pulselut is
 	generic(
 			lut_bit_width : integer := 8
 	);
@@ -77,7 +77,7 @@ component pulselut_entity is
 	);
 end component;
 
-component sawlut_entity is
+component sawlut is
 	generic(
 			lut_bit_width : integer := 8
 	);
@@ -89,7 +89,7 @@ component sawlut_entity is
 	);
 end component;
 
-component trilut_entity is
+component trilut is
 	generic(
 			lut_bit_width : integer := 8
 	);
@@ -101,7 +101,7 @@ component trilut_entity is
 	);
 end component;
 
-component sample_clk_gen_entity is
+component sample_clk_gen is
 	generic(
 			divider : integer := 512
 	);
@@ -122,7 +122,7 @@ end component;
 
 
 begin
-	G1: sample_clk_gen_entity 
+	G1: sample_clk_gen 
 		port map(
 				clk=>clk, 
 				reset=>reset, 
@@ -139,7 +139,7 @@ begin
 				pa_word=>pas_word
 		);
 		
-	G3: phaseaccum_entity 
+	G3: phaseaccum
 		port map(
 				a_clk=>as_clk, 
 				reset=>reset, 
@@ -147,7 +147,7 @@ begin
 				phase_out=>a_phase_out
 		);
 		
-	G4: sinelut_entity 
+	G4: sinelut
 		port map(
 				phase_in=>a_phase_out, 
 				a_clk=>as_clk, 
@@ -155,7 +155,7 @@ begin
 				data=>si_data
 				);
 				
-	G5: pulselut_entity 
+	G5: pulselut 
 		port map(
 				phase_in=>a_phase_out, 
 				a_clk=>as_clk, 
@@ -163,7 +163,7 @@ begin
 				data=>sq_data
 		);
 		
-	G6: sawlut_entity 
+	G6: sawlut
 		port map(
 				phase_in=>a_phase_out, 
 				a_clk=>as_clk, 
@@ -171,7 +171,7 @@ begin
 				data=>sa_data
 		);
 		
-	G7: trilut_entity 
+	G7: trilut
 		port map(
 				phase_in=>a_phase_out, 
 				a_clk=>as_clk, 

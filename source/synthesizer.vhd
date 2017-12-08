@@ -4,8 +4,7 @@ use ieee.std_logic_arith.all;
 use IEEE.STD_LOGIC_UNSIGNED.all;
 use IEEE.numeric_std.all; 
 
-
-entity synthesizer is 
+entity synthesizer is
 	port( 
 			-----------------------main-----------------------------------
 			clk            		: in  std_logic								;

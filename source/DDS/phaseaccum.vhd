@@ -14,7 +14,7 @@ entity phaseaccum is
         pa_word  	  	: in unsigned(pa_bit_width-1 downto 0);
         phase_out     	: out unsigned(lut_bit_width-1 downto 0)
 	);
-end phaseaccum_entity;
+end phaseaccum;
 
 architecture phaseaccum_arch of phaseaccum is
 	signal phase_reg : unsigned(pa_bit_width-1 downto 0) := (others => '0');

@@ -12,7 +12,7 @@ entity sample_clk_gen is
 			a_clk 		: out std_logic;
 			a_clk_main	: out std_logic
 		);
-end sample_clk_gen_entity;
+end sample_clk_gen;
 
 architecture sample_clk_gen_arch of sample_clk_gen is
 	signal local_clk : std_logic := '0'; 

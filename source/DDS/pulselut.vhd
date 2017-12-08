@@ -1,7 +1,7 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 use IEEE.numeric_std.ALL;
-ENTITY pulselut_entity IS
+entity pulselut is
 	generic(
 			lut_bit_width : integer := 8;
 			data_width: integer := 16
@@ -12,9 +12,9 @@ ENTITY pulselut_entity IS
 		reset         : in std_logic;
 		data          : out std_logic_vector(15 downto 0)
 	);
-end pulselut_entity;
+end pulselut;
 
-architecture pulselut_entity_arch of pulselut_entity is 
+architecture pulselut_arch of pulselut is 
 --LUT
 	type sine_lut is array (0 to 1) of integer;
 	constant sinedata:sine_lut:= (-8000,8000);
