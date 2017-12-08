@@ -1,5 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 use ieee.numeric_std.all;
 
 
@@ -36,11 +38,10 @@ architecture buttons_arch of buttons is
 	end component;
 	
 ----signals-----------------
-	signal clk		: std_logic;
-	signal reset 	: std_logic;
 	signal s_btn_l 	: std_logic;
 	signal s_btn_r 	: std_logic;
 	signal s_cei 	: std_logic;
+	signal cnt      : std_logic_vector( 3 downto 0 );
 	
 begin
 ----instances---------------
@@ -74,13 +75,14 @@ begin
 	process(clk, reset)
 		begin
 		if reset = '0' then
-			out_function <= (others => '0');
+			cnt <= (others => '0');
 		elsif clk'event and clk = '1' then
 			if (s_btn_r = '1') then
-				out_function <= out_function - 1;
+				cnt <= cnt - 1;
 			elsif(s_btn_l = '1') then
-				out_function <= out_function + 1;
+				cnt <= cnt + 1;
 			end if;
 		end if;
 	end process;
+	out_function <= cnt;
 end architecture;

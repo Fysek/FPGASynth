@@ -46,7 +46,7 @@ begin
 		end if;
 	end process;
 
-ceo <= '1' when divider = (divide_factor-1) and CE = '1' else '0';
+ceo <= '1' when divider = (divide_factor-1) else '0';
 	
 end architecture;
 

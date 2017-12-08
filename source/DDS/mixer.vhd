@@ -15,9 +15,9 @@ entity mixer is
 		data_si_2	   	: in std_logic_vector(15 downto 0);
 		data_sq_1 		: in std_logic_vector(15 downto 0);
 		data_sq_2	   	: in std_logic_vector(15 downto 0);
-		data_sa_1, 		: in std_logic_vector(15 downto 0);
+		data_sa_1 		: in std_logic_vector(15 downto 0);
 		data_sa_2	   	: in std_logic_vector(15 downto 0);
-		data_tr_1, 		: in std_logic_vector(15 downto 0);
+		data_tr_1 		: in std_logic_vector(15 downto 0);
 		data_tr_2	   	: in std_logic_vector(15 downto 0);
 		wave_select 	: in std_logic_vector(3 downto 0);	
 		data_to_hdmi	: out std_logic_vector(15 downto 0)
@@ -37,17 +37,17 @@ begin
 			output <= 0;
 			data_to_hdmi <= (others => '0');
 		elsif falling_edge(a_clk) then
-			case(WAV_SELECT) is
-				when x"00" => -- SINE
+			case(wave_select) is
+				when x"0" => -- SINE
 					osc1 := to_integer(signed(data_si_1));
 					osc2 := to_integer(signed(data_si_2));
-				when x"01" => -- SQUARE
+				when x"1" => -- SQUARE
 					osc1 := to_integer(signed(data_sq_1));
 					osc2 := to_integer(signed(data_sq_2));
-				when x"02" => -- SAW
+				when x"2" => -- SAW
 					osc1 := to_integer(signed(data_sa_1));
 					osc2 := to_integer(signed(data_sa_2));
-				when x"03" => -- TRI
+				when x"3" => -- TRI
 					osc1 := to_integer(signed(data_tr_1));
 					osc2 := to_integer(signed(data_tr_2));
 				when others => -- SINE

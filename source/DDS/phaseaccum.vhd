@@ -2,7 +2,7 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-entity phaseaccum_entity is 
+entity phaseaccum is 
 	generic(
 			max_length 		: integer := 2147483647;
 			lut_bit_width 	: integer := 8;
@@ -16,7 +16,7 @@ entity phaseaccum_entity is
 	);
 end phaseaccum_entity;
 
-architecture phaseaccum_entity_arch of phaseaccum_entity is
+architecture phaseaccum_arch of phaseaccum is
 	signal phase_reg : unsigned(pa_bit_width-1 downto 0) := (others => '0');
 begin
 	process(a_clk,reset)

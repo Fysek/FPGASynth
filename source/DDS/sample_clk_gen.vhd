@@ -2,19 +2,19 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-entity sample_clk_gen_entity is
+entity sample_clk_gen is
 	generic(
 			divider : integer := 512
 	);
 	port(
 			clk			: in std_logic;
 			reset		: in std_logic;
-			a_clk 		: out std_logic
+			a_clk 		: out std_logic;
 			a_clk_main	: out std_logic
 		);
 end sample_clk_gen_entity;
 
-architecture sample_clk_gen_entity_arch of sample_clk_gen_entity is
+architecture sample_clk_gen_arch of sample_clk_gen is
 	signal local_clk : std_logic := '0'; 
 begin
 	process(clk, reset)

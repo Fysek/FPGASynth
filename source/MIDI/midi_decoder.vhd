@@ -22,14 +22,14 @@ begin
 		begin
 			if reset = '0' then
 				note_on <= (others=>'0');
-				note_id <= (others=>'0');
+				note_off <= (others=>'0');
 				velocity <= (others=>'0');
 			elsif (clk'event and clk='1') then
 				velocity <= midi_in(7 downto 0);
 				if (midi_in(23 downto 20) = "1001") then
 					note_on <= midi_in(15 downto 8);
 				elsif(midi_in(23 downto 20) = "1000") then
-					note_on <= midi_in(15 downto 8);
+					note_off <= midi_in(15 downto 8);
 				end if;
 			end if;
 		end process;

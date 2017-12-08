@@ -90,9 +90,9 @@ architecture synthesizer_arch of synthesizer is
 			data_si_2	   	: in std_logic_vector(15 downto 0);
 			data_sq_1 		: in std_logic_vector(15 downto 0);
 			data_sq_2	   	: in std_logic_vector(15 downto 0);
-			data_sa_1, 		: in std_logic_vector(15 downto 0);
+			data_sa_1 		: in std_logic_vector(15 downto 0);
 			data_sa_2	   	: in std_logic_vector(15 downto 0);
-			data_tr_1, 		: in std_logic_vector(15 downto 0);
+			data_tr_1 		: in std_logic_vector(15 downto 0);
 			data_tr_2	   	: in std_logic_vector(15 downto 0);
 			wave_select 	: in std_logic_vector(3 downto 0);	
 			data_to_hdmi	: out std_logic_vector(15 downto 0)
@@ -120,9 +120,7 @@ architecture synthesizer_arch of synthesizer is
 	
 
 ----------------------------------------------------------------------
-			signal clk          	: std_logic						;
-            signal reset        	: std_logic						;
-				
+
 			signal s_a_clk_0        : std_logic						;
 			signal s_a_clk_1        : std_logic						;
 			
@@ -147,7 +145,7 @@ architecture synthesizer_arch of synthesizer is
 			signal s_synth_mode 	: std_logic_vector(3 downto 0)	;
 			signal dp   			: std_logic						;
 			
-			signal s_synth_hdmi 	: std_logic_vector(3 downto 0)	;
+			signal s_synth_hdmi 	: std_logic_vector(15 downto 0)	;
 ----------------------------------------------------------------------	
 	begin
 	
