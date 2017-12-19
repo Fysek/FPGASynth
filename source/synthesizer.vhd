@@ -22,10 +22,10 @@ entity synthesizer is
 			button_r					: in  std_logic								;
 			--------------------------------------------------------------
 			-----------------------hdmi-----------------------------------
-			datap   					: out  std_logic_vector(2 downto 0)		;
-			datan   					: out  std_logic_vector(2 downto 0)		;
-			clkp          			: out  std_logic								;
-			clkn						: out  std_logic
+			tmds_d0					: out std_logic;
+			tmds_d1					: out std_logic;							
+			tmds_d2					: out std_logic;
+			tmds_clk					: out std_logic			
 			--------------------------------------------------------------
 	    );
 end entity;
@@ -116,45 +116,82 @@ architecture synthesizer_arch of synthesizer is
 		);
 	end component;
 	
+	component av_hdmi is
+		generic
+		(
+			FREQ: integer := 27000000;		-- pixel clock frequency
+			FS: integer := 48000;			-- audio sample rate - should be 32000, 41000 or 48000
+			CTS: integer := 27000;			-- CTS = Freq(pixclk) * N / (128 * Fs)
+			N: integer := 6144				-- N = 128 * Fs /1000,  128 * Fs /1500 <= N <= 128 * Fs /300									-- Check HDMI spec 7.2 for details
+		);
+		port (
+		-- clocks
+		clk_pixel_x10	: in std_logic;
+		clk_pixel		: in std_logic;
+		
+		-- components
+		i_r				: in std_logic_vector(7 downto 0);
+		i_g				: in std_logic_vector(7 downto 0);
+		i_b				: in std_logic_vector(7 downto 0);	
+		i_blank			: in std_logic;
+		i_hsync			: in std_logic;
+		i_vsync			: in std_logic;
+		
+		-- PCM audio 
+		i_audio_pcm_l 	: in std_logic_vector(15 downto 0);
+		i_audio_pcm_r	: in std_logic_vector(15 downto 0);
+		
+		-- TMDS output
+		o_tmds_d0		: out std_logic;
+		o_tmds_d1		: out std_logic;
+		o_tmds_d2		: out std_logic;
+		o_tmds_clk		: out std_logic
+		);
+	end component;
+	
+	
+	
 	
 
 ----------------------------------------------------------------------
 
-			signal s_a_clk_0        : std_logic						;
-			signal s_a_clk_1        : std_logic						;
-			
-			signal s_note_on 		: std_logic_vector(7 downto 0)	;
-			signal s_note_off 		: std_logic_vector(7 downto 0)	;
-			signal s_note_osc_0		: std_logic_vector(7 downto 0)	;
-			signal s_note_osc_1		: std_logic_vector(7 downto 0)	;
-			signal s_enable_osc_0	: std_logic						;
-			signal s_enable_osc_1	: std_logic						;
-			
-			signal s_si_data_osc_0  :std_logic_vector(15 downto 0) 	;
-			signal s_sq_data_osc_0	:std_logic_vector(15 downto 0) 	;
-			signal s_sa_data_osc_0 	:std_logic_vector(15 downto 0) 	;
-			signal s_tr_data_osc_0 	:std_logic_vector(15 downto 0) 	;
-																	
-			signal s_si_data_osc_1 	:std_logic_vector(15 downto 0) 	;
-			signal s_sq_data_osc_1	:std_logic_vector(15 downto 0) 	;
-			signal s_sa_data_osc_1 	:std_logic_vector(15 downto 0) 	;
-			signal s_tr_data_osc_1 	:std_logic_vector(15 downto 0) 	;
-			
-			signal s_velocity 		: std_logic_vector(7 downto 0)	;
-			signal s_synth_mode 	: std_logic_vector(3 downto 0)	;
-			signal dp   			: std_logic						;
-			
-			signal s_synth_hdmi 	: std_logic_vector(15 downto 0)	;
+		signal s_a_clk_0        : std_logic						;
+		signal s_a_clk_1        : std_logic						;
+		
+		signal s_note_on 		: std_logic_vector(7 downto 0)	;
+		signal s_note_off 		: std_logic_vector(7 downto 0)	;
+		signal s_note_osc_0		: std_logic_vector(7 downto 0)	;
+		signal s_note_osc_1		: std_logic_vector(7 downto 0)	;
+		signal s_enable_osc_0	: std_logic						;
+		signal s_enable_osc_1	: std_logic						;
+		
+		signal s_si_data_osc_0  : std_logic_vector(15 downto 0) ;
+		signal s_sq_data_osc_0	: std_logic_vector(15 downto 0) ;
+		signal s_sa_data_osc_0 	: std_logic_vector(15 downto 0) ;
+		signal s_tr_data_osc_0 	: std_logic_vector(15 downto 0) ;
+								 								
+		signal s_si_data_osc_1 	: std_logic_vector(15 downto 0) ;
+		signal s_sq_data_osc_1	: std_logic_vector(15 downto 0) ;
+		signal s_sa_data_osc_1 	: std_logic_vector(15 downto 0) ;
+		signal s_tr_data_osc_1 	: std_logic_vector(15 downto 0) ;
+		
+		signal s_clk_pixel_x10   : std_logic						;
+		signal s_clk_pixel	    : std_logic						;
+		                        
+		signal s_i_r			: std_logic_vector(7 downto 0)	;
+		signal s_i_g			: std_logic_vector(7 downto 0)	;
+		signal s_i_b			: std_logic_vector(7 downto 0)	;
+		signal s_i_blank		: std_logic						;
+		signal s_i_hsync		: std_logic						;
+		signal s_i_vsync		: std_logic						;
+		
+		signal s_velocity 	: std_logic_vector(7 downto 0)	;
+		signal s_synth_mode 	: std_logic_vector(3 downto 0)	;
+		signal dp   			: std_logic						;
+		
+		signal s_synth_hdmi 	: std_logic_vector(15 downto 0)	;
 ----------------------------------------------------------------------	
 	begin
-	
-	--MIDI_BUFFER_INST : midi_buffer
-	--		port map(	
-	--			clk     	=> clk		,	
-	--			reset   	=> reset 	,	
-	--			data_in 	=> uart_rx	,	
-	--			midi_out	=> midi_out		
-	--		);
 			
 	MIDI_DECODER_INST : midi_decoder
 		port map(
@@ -190,8 +227,6 @@ architecture synthesizer_arch of synthesizer is
 				tr_data     	=> s_tr_data_osc_0	,
 				a_clk			=> s_a_clk_0
 		);
-		
-		
 		
 	DDS_INST_OSC_1 : dds
 		port map(	
@@ -237,5 +272,27 @@ architecture synthesizer_arch of synthesizer is
 				dp    			=> dp				,   
 				disp_seg		=> disp_seg
 		);
-			
+		
+		
+	AV_HDMI_INST : av_hdmi
+		port map(
+				clk_pixel_x10	=> s_clk_pixel_x10    ,
+				clk_pixel		=> s_clk_pixel	   	,
+				                                 
+				i_r				=> s_i_r	     	,
+				i_g				=> s_i_g	     	,
+				i_b				=> s_i_b	     	,
+				i_blank			=> s_i_blank     	,
+				i_hsync			=> s_i_hsync     	,
+				i_vsync			=> s_i_vsync     	,
+													
+				i_audio_pcm_l 	=> s_synth_hdmi  	,
+				i_audio_pcm_r	=> s_synth_hdmi  	,
+														
+				o_tmds_d0		=> tmds_d0	     	,
+				o_tmds_d1		=> tmds_d1	     	,
+				o_tmds_d2		=> tmds_d2	     	,
+				o_tmds_clk		=> tmds_clk
+		);
+		
 end architecture;
