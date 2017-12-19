@@ -33,6 +33,9 @@ architecture dds_arch of dds is
 
 begin
 	SAMPLE_CLK_GEN_INST: entity work.sample_clk_gen 
+		generic(
+			divider : integer := 512
+		);
 		port map(
 				clk=>clk, 
 				reset=>reset, 
@@ -41,6 +44,10 @@ begin
 		);
 		
 	NOTE_TO_PA_INST: entity work.note_to_pa 
+		generic(
+			lut_bit_width 	: integer := 8;
+			pa_bit_width 	: integer := 32
+		);
 		port map(
 				clk=>clk, 
 				reset=>reset, 
@@ -50,6 +57,11 @@ begin
 		);
 		
 	PHASEACCUM_INST: entity work.phaseaccum
+		generic(
+				max_length 		: integer := 2147483647;
+				lut_bit_width 	: integer := 8;
+				pa_bit_width 	: integer := 32
+		);
 		port map(
 				a_clk=>as_clk, 
 				reset=>reset, 
@@ -58,6 +70,9 @@ begin
 		);
 		
 	SINELUT_INST:  entity work.sinelut
+		generic(
+			lut_bit_width : integer := 8
+		);
 		port map(
 				phase_in=>a_phase_out, 
 				a_clk=>as_clk, 
@@ -65,7 +80,10 @@ begin
 				data=>si_data
 				);
 				
-	PHASELUT_INST:  entity work.pulselut	
+	PHASELUT_INST:  entity work.pulselut
+	generic(
+			lut_bit_width : integer := 8
+		);	
 		port map(
 				phase_in=>a_phase_out, 
 				a_clk=>as_clk, 
@@ -74,6 +92,9 @@ begin
 		);
 		
 	SAWLUT_INST:  entity work.sawlut
+		generic(
+			lut_bit_width : integer := 8
+		);
 		port map(
 				phase_in=>a_phase_out, 
 				a_clk=>as_clk, 
@@ -82,6 +103,9 @@ begin
 		);
 		
 	TRILUT_INST:  entity work.trilut
+		generic(
+			lut_bit_width : integer := 8
+		);
 		port map(
 				phase_in=>a_phase_out, 
 				a_clk=>as_clk, 

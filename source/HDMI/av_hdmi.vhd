@@ -265,8 +265,13 @@ redout: red <=
 	"1011001100" when state = videoDataGuardBand else
 	"0100110011" when state = dataIslandPreGuard or state = dataIslandPostGuard else
 	enc2out;
+ 
+o_tmds_d0	<= tmds_d0	;
+o_tmds_d1	<= tmds_d1	;
+o_tmds_d2	<= tmds_d2	;
+o_tmds_clk 	<= clk_pixel;
 
-	
+
 DELAY_LINE_INST: entity work.hdmi_delay
 	port map (
 		i_clk => clk_pixel,
@@ -348,16 +353,5 @@ SERIALIZER_INST_blue: entity work.serializer
 		dout		=> tmds_d2				
 	);
 
-	
---tx_in <= red(0) & red(1) & red(2) & red(3) & red(4) & red(5) & red(6) & red(7) & red(8) & red(9) &
---	 green(0) & green(1) & green(2) & green(3) & green(4) & green(5) & green(6) & green(7) & green(8) & green(9) &
---	 blue(0) & blue(1) & blue(2) & blue(3) & blue(4) & blue(5) & blue(6) & blue(7) & blue(8) & blue(9);
-
-	 
-	 
-o_tmds_d0	<= tmds_d0	;
-o_tmds_d1	<= tmds_d1	;
-o_tmds_d2	<= tmds_d2	;
-o_tmds_clk 	<= clk_pixel;
 
 end architecture;

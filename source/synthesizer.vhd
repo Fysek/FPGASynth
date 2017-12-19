@@ -8,6 +8,7 @@ entity synthesizer is
 	port( 
 			-----------------------main-----------------------------------
 			clk            		: in  std_logic								;
+			clk_pixel_x10         : in  std_logic								;
 			reset            		: in  std_logic								;--async reset button,negative active
 			--------------------------------------------------------------
 			-----------------------uart-----------------------------------
@@ -32,127 +33,6 @@ end entity;
 
 architecture synthesizer_arch of synthesizer is
 
-	component midi_decoder is
-		port(
-			clk            		: in  std_logic							;
-			reset            		: in  std_logic						;
-			midi_in					: in  std_logic_vector(23 downto 0) ;
-			note_on  				: out  std_logic_vector(7 downto 0) ;					
-			note_off  				: out  std_logic_vector(7 downto 0);
-			velocity         		: out  std_logic_vector(7 downto 0)
-		);
-	end component;
-	--osc handler ddsy mixer hdmi
-
-	component osc_handler is
-		port(
-			clk				: in std_logic;
-			reset			: in std_logic;
-			note_on_osc 		: in std_logic_vector(7 downto 0); --Note ON/OFF 0x80(off), 0xFF(on)
-			note_off_osc 		: in std_logic_vector(7 downto 0); --Note ON/OFF 0x80(off), 0xFF(on)
-			note0				: out std_logic_vector(7 downto 0);
-			note1				: out std_logic_vector(7 downto 0);
-			enable0				: out std_logic;
-			enable1 			: out std_logic
-		);
-	end component;
-	
-	component dds is
-		generic(
-				lut_bit_width : integer := 8;
-				pa_bit_width : integer 	:= 32
-		);
-		port(
-			clk   		: in std_logic;
-			reset 		: in std_logic;
-			enable		: in std_logic;	
-			note_dds	: in std_logic_vector(7 downto 0); --Note ON/OFF 0x80(off), 0xFF(on);
-			si_data 	: out std_logic_vector(15 downto 0);
-			sq_data 	: out std_logic_vector(15 downto 0);
-			sa_data 	: out std_logic_vector(15 downto 0);
-			tr_data  	: out std_logic_vector(15 downto 0);
-			a_clk		: out std_logic
-		);
-	end component;
-	
-	component mixer is
-		generic(
-				lut_bit_width : integer := 8;
-				data_width: integer 	:= 16;
-				max_amplitude : integer := 32767;
-				min_amplitude : integer := -32767
-		);
-		port(	
-			a_clk      	: in std_logic;
-			reset         	: in std_logic;
-			data_si_1		: in std_logic_vector(15 downto 0); 
-			data_si_2	   	: in std_logic_vector(15 downto 0);
-			data_sq_1 		: in std_logic_vector(15 downto 0);
-			data_sq_2	   	: in std_logic_vector(15 downto 0);
-			data_sa_1 		: in std_logic_vector(15 downto 0);
-			data_sa_2	   	: in std_logic_vector(15 downto 0);
-			data_tr_1 		: in std_logic_vector(15 downto 0);
-			data_tr_2	   	: in std_logic_vector(15 downto 0);
-			wave_select 	: in std_logic_vector(3 downto 0);	
-			data_to_hdmi	: out std_logic_vector(15 downto 0)
-		);
-	end component;
-	
-	component buttons is
-		port(
-			clk       				: in  std_logic							;
-			reset     				: in  std_logic							;
-			button_l 				: in  std_logic							;
-			button_r 				: in  std_logic							;
-			out_function    	  	: out std_logic_vector(3 downto 0)
-			);
-	end component;
-	
-	component hex2seg is
-		port(
-			num      				: in  std_logic_vector(3 downto 0)		;	
-			dp       				: in  std_logic							;
-			disp_seg 				: out std_logic_vector(7 downto 0)
-		);
-	end component;
-	
-	component av_hdmi is
-		generic
-		(
-			FREQ: integer := 27000000;		-- pixel clock frequency
-			FS: integer := 48000;			-- audio sample rate - should be 32000, 41000 or 48000
-			CTS: integer := 27000;			-- CTS = Freq(pixclk) * N / (128 * Fs)
-			N: integer := 6144				-- N = 128 * Fs /1000,  128 * Fs /1500 <= N <= 128 * Fs /300									-- Check HDMI spec 7.2 for details
-		);
-		port (
-		-- clocks
-		clk_pixel_x10	: in std_logic;
-		clk_pixel		: in std_logic;
-		
-		-- components
-		i_r				: in std_logic_vector(7 downto 0);
-		i_g				: in std_logic_vector(7 downto 0);
-		i_b				: in std_logic_vector(7 downto 0);	
-		i_blank			: in std_logic;
-		i_hsync			: in std_logic;
-		i_vsync			: in std_logic;
-		
-		-- PCM audio 
-		i_audio_pcm_l 	: in std_logic_vector(15 downto 0);
-		i_audio_pcm_r	: in std_logic_vector(15 downto 0);
-		
-		-- TMDS output
-		o_tmds_d0		: out std_logic;
-		o_tmds_d1		: out std_logic;
-		o_tmds_d2		: out std_logic;
-		o_tmds_clk		: out std_logic
-		);
-	end component;
-	
-	
-	
-	
-
 ----------------------------------------------------------------------
 
 		signal s_a_clk_0        : std_logic						;
@@ -175,7 +55,6 @@ architecture synthesizer_arch of synthesizer is
 		signal s_sa_data_osc_1 	: std_logic_vector(15 downto 0) ;
 		signal s_tr_data_osc_1 	: std_logic_vector(15 downto 0) ;
 		
-		signal s_clk_pixel_x10   : std_logic						;
 		signal s_clk_pixel	    : std_logic						;
 		                        
 		signal s_i_r			: std_logic_vector(7 downto 0)	;
@@ -193,7 +72,7 @@ architecture synthesizer_arch of synthesizer is
 ----------------------------------------------------------------------	
 	begin
 			
-	MIDI_DECODER_INST : midi_decoder
+	MIDI_DECODER_INST : entity work.midi_decoder
 		port map(
 				clk    		=> clk 					,
 				reset    	=> reset 				,
@@ -203,7 +82,7 @@ architecture synthesizer_arch of synthesizer is
 				velocity 	=> s_velocity				--maybe to mixer, use different amplitude
 		);
 			
-	OSC_HANDLER_INST : osc_handler
+	OSC_HANDLER_INST : entity work.osc_handler
 		port map(
 				clk			 	=> clk 	  			,
 		        reset		 	=> reset  			,
@@ -215,7 +94,7 @@ architecture synthesizer_arch of synthesizer is
 		        enable1 	    => s_enable_osc_1
 		);
 
-	DDS_INST_OSC_0 : dds
+	DDS_INST_OSC_0 : entity work.dds
 		port map(
 				clk   			=> clk 	    		,
 				reset 	    	=> reset    		,
@@ -228,7 +107,7 @@ architecture synthesizer_arch of synthesizer is
 				a_clk			=> s_a_clk_0
 		);
 		
-	DDS_INST_OSC_1 : dds
+	DDS_INST_OSC_1 : entity work.dds
 		port map(	
 				clk   			=> clk 	    		,
 				reset 	    	=> reset    		,
@@ -241,7 +120,7 @@ architecture synthesizer_arch of synthesizer is
 				a_clk	    	=> s_a_clk_1
 		);
 		
-	MIXER_INST : mixer	
+	MIXER_INST : entity work.mixer	
 		port map(                        
 				a_clk      		=> s_a_clk_0        ,
 				reset       	=> reset    		,
@@ -257,7 +136,7 @@ architecture synthesizer_arch of synthesizer is
 				data_to_hdmi	=> s_synth_hdmi
 		);
 			
-	BUTTONS_INST : buttons
+	BUTTONS_INST : entity work.buttons
 		port map(
 				clk 			=> clk				,       	
 				reset     	  	=> reset			, 
@@ -266,7 +145,7 @@ architecture synthesizer_arch of synthesizer is
 				out_function   	=> s_synth_mode
 		);
 				
-	HEX2SEG_INST : hex2seg
+	HEX2SEG_INST : entity work.hex2seg
 		port map(
 				num  			=> s_synth_mode		,   
 				dp    			=> dp				,   
@@ -274,9 +153,9 @@ architecture synthesizer_arch of synthesizer is
 		);
 		
 		
-	AV_HDMI_INST : av_hdmi
+	AV_HDMI_INST : entity work.av_hdmi
 		port map(
-				clk_pixel_x10	=> s_clk_pixel_x10    ,
+				clk_pixel_x10	=> clk_pixel_x10    ,
 				clk_pixel		=> s_clk_pixel	   	,
 				                                 
 				i_r				=> s_i_r	     	,
