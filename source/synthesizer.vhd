@@ -71,13 +71,14 @@ architecture synthesizer_arch of synthesizer is
 		signal s_synth_hdmi 	: std_logic_vector(15 downto 0)	;
 ----------------------------------------------------------------------	
 	begin
-			
+	
+	
 	PLL_INST: entity work.PLL 
 		port map(
-			areset	=>	reset				, 
-			inclk0	=>	clk				,
-			c0			=>	s_clk_pixel		,
-			c1			=>	s_clk_pixel_x10
+			areset 			=> reset					,
+			inclk0			=> clk					,
+			c0					=>	s_clk_pixel			,
+			c1					=> s_clk_pixel_x10
 		);
 			
 	MIDI_DECODER_INST : entity work.midi_decoder
