@@ -7,8 +7,7 @@ use IEEE.numeric_std.all;
 entity synthesizer is
 	port( 
 			-----------------------main-----------------------------------
-			clk            		: in  std_logic								;
-			clk_pixel_x10         : in  std_logic								;
+			clk            		: in  std_logic								;--10MHz clock for board, PLL gives pixclk(27MHz) and pixclk10x								;
 			reset            		: in  std_logic								;--async reset button,negative active
 			--------------------------------------------------------------
 			-----------------------uart-----------------------------------
@@ -55,7 +54,8 @@ architecture synthesizer_arch of synthesizer is
 		signal s_sa_data_osc_1 	: std_logic_vector(15 downto 0) ;
 		signal s_tr_data_osc_1 	: std_logic_vector(15 downto 0) ;
 		
-		signal s_clk_pixel	    : std_logic						;
+		signal s_clk_pixel	    : std_logic						; 
+		signal s_clk_pixel_x10 	    : std_logic						;
 		                        
 		signal s_i_r			: std_logic_vector(7 downto 0)	;
 		signal s_i_g			: std_logic_vector(7 downto 0)	;
@@ -72,13 +72,21 @@ architecture synthesizer_arch of synthesizer is
 ----------------------------------------------------------------------	
 	begin
 			
+	PLL_INST: entity work.PLL 
+		port map(
+			areset	=>	reset				, 
+			inclk0	=>	clk				,
+			c0			=>	s_clk_pixel		,
+			c1			=>	s_clk_pixel_x10
+		);
+			
 	MIDI_DECODER_INST : entity work.midi_decoder
 		port map(
 				clk    		=> clk 					,
 				reset    	=> reset 				,
 				midi_in		=> midi_in				,
 				note_on  	=> s_note_on			,
-				note_off	=> s_note_off			,
+				note_off		=> s_note_off			,
 				velocity 	=> s_velocity				--maybe to mixer, use different amplitude
 		);
 			
@@ -155,7 +163,7 @@ architecture synthesizer_arch of synthesizer is
 		
 	AV_HDMI_INST : entity work.av_hdmi
 		port map(
-				clk_pixel_x10	=> clk_pixel_x10    ,
+				clk_pixel_x10	=> s_clk_pixel_x10    ,
 				clk_pixel		=> s_clk_pixel	   	,
 				                                 
 				i_r				=> s_i_r	     	,
