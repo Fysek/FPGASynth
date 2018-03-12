@@ -1,0 +1,98 @@
+Archive Project report for synth
+Mon Jan 08 09:37:08 2018
+Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Archive Project Summary
+  3. Archive Project Messages
+  4. Files Archived
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Intel and sold by Intel or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++----------------------------------------------------------------+
+; Archive Project Summary                                        ;
++------------------------+---------------------------------------+
+; Archive Project Status ; Successful - Mon Jan 08 09:37:08 2018 ;
+; Revision Name          ; synth                                 ;
+; Top-level Entity Name  ; synth                                 ;
+; Family                 ; MAX 10                                ;
++------------------------+---------------------------------------+
+
+
++--------------------------+
+; Archive Project Messages ;
++--------------------------+
+Info: File Set 'Source control' contains:
+    Info: Project source and settings files
+    Info: Automatically detected source files
+Info: Archive will store files relative to the closest common parent directory
+Info (13213): Using common directory D:/intelFPGA_lite/17.0/synth/
+Info: ----------------------------------------------------------
+Info: ----------------------------------------------------------
+Info: Generated archive 'D:/intelFPGA_lite/17.0/synth/synth.qar'
+Info: ----------------------------------------------------------
+Info: ----------------------------------------------------------
+Info: Generated report 'synth.archive.rpt'
+Info (23030): Evaluation of Tcl script d:/intelfpga_lite/17.0/quartus/common/tcl/apps/qpm/qar.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 638 megabytes
+    Info: Processing ended: Mon Jan 08 09:37:08 2018
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+
+
++--------------------------------------------------------------+
+; Files Archived                                               ;
++--------------------------------------------------------------+
+; File Name                                                    ;
++--------------------------------------------------------------+
+; buttons.vhd                                                  ;
+; d:/intelfpga_lite/17.0/quartus/bin64/assignment_defaults.qdf ;
+; dds.vhd                                                      ;
+; hex2seg.vhd                                                  ;
+; midi_decoder.vhd                                             ;
+; mixer_entity.vhd                                             ;
+; note_2_pa.vhd                                                ;
+; osc_handler.vhd                                              ;
+; pb_debouncer.vhd                                             ;
+; phaseaccum_entity.vhd                                        ;
+; pll.cmp                                                      ;
+; pll.ppf                                                      ;
+; pll.qip                                                      ;
+; pll.vhd                                                      ;
+; pulselut_entity.vhd                                          ;
+; sample_clk_gen_entity.vhd                                    ;
+; sawlut_entity.vhd                                            ;
+; simulation/modelsim/synth_tb.vhd                             ;
+; sinelut_entity.vhd                                           ;
+; synth.qpf                                                    ;
+; synth.qsf                                                    ;
+; synth.vhd                                                    ;
+; trilut_entity.vhd                                            ;
++--------------------------------------------------------------+
+
+

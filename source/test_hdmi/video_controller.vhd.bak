@@ -1,0 +1,112 @@
+
+library ieee;
+use ieee.numeric_std.all;
+use ieee.std_logic_1164.all;
+
+
+entity video_controller is
+	generic
+	(
+		constant h_total 	: integer := 858; 		--all pixels per line, active + blank
+		constant h_active 	: integer := 720;		--active pixels per line
+		constant h_front 	: integer := 16;		--horizontal front porch
+		constant h_sync 	: integer := 62;		--horizontal sync length
+		constant h_back 	: integer := 60;		--horizontal back porch
+		constant h_blank 	: integer := 138;		--horizontal blank pixels = hfront + hsync + hback
+
+		constant v_total 	: integer := 525;		--total number of lines = active_lines + blank_lines
+		constant v_active 	: integer := 480;		--total number of active lines
+		constant v_front 	: integer := 9;			--vertical front porch
+		constant v_sync 	: integer := 6;			--vertical sync length
+		constant v_back 	: integer := 30;		--vertical back porch
+		constant v_blank 	: integer := 45			--vertical blank_lines = vfront + vsync + vback
+		
+	);
+	port
+	(
+		reset 	: in std_logic;	--reset
+		clk 	: in std_logic;	--clock
+		
+		c_red 	: out std_logic_vector(7 downto 0);	
+		c_green : out std_logic_vector(7 downto 0);
+		c_blue  : out std_logic_vector(7 downto 0);
+		
+		c_x  	: out std_logic_vector(11 downto 0);
+		c_y  	: out std_logic_vector(11 downto 0);
+		vde		: out std_logic;									--video data enable, required by T.M.D.S encoder
+		vhsync	: out std_logic_vector(1 downto 0)
+	);
+end entity;
+
+architecture video_controller_arch of video_controller is
+
+	signal s_vde : std_logic;
+	signal s_hsync : std_logic;
+	signal s_vsync : std_logic;
+	signal s_vhsync : std_logic_vector(1 downto 0);
+	
+begin
+	
+process(reset, clk)
+	variable counterx : unsigned (11 downto 0) := (others => '0');
+	variable countery : unsigned (11 downto 0) := (others => '0');
+	begin
+		if reset = '0' then
+			s_vde <= '0';
+			s_hsync <= '1';
+			s_vsync <= '1';
+			c_red <= (others => '0');
+			c_green <= (others => '0');
+			c_blue <= (others => '0');
+			counterx := (others => '0');
+			countery := (others => '0');
+		elsif rising_edge(clk) then
+------------------counters-----------------------------------------------			
+			if counterx = h_total - 1 then
+				if countery = v_total - 1 then
+					countery := (others => '0');
+				else
+					countery := countery + 1;
+				end if;
+				counterx := (others => '0');
+			else
+				counterx := counterx + 1;
+			end if;
+------------------hsync---------------------------------------------------			
+			if (h_front) <= counterx and counterx < (h_front+h_sync) then
+				s_hsync <= '0';--neg active
+			else
+				s_hsync <= '1';
+			end if;
+------------------vsync---------------------------------------------------				
+			if (v_active+v_front) <= countery and countery < (v_active+v_front+v_sync) then
+				s_vsync <= '0';--neg active
+			else
+				s_vsync <= '1';
+			end if;		
+------------------vde-----------------------------------------------------				
+			if h_blank <= counterx and counterx < h_total and 0 <= countery and countery < v_active then
+				s_vde <= '1';
+			else
+				s_vde <= '0';
+			end if;		
+------------------vdata---------------------------------------------------	
+			if s_vde = '1' then
+				c_red <= x"FF";
+				c_green <= x"7F";
+				c_blue <= x"FF";			
+			else
+				c_red <= x"00";
+				c_green <= x"00";
+				c_blue <= x"00";
+			end if;
+-------------------------------------------------------------------------				
+			c_x		<=std_logic_vector(counterx);
+			c_y		<=std_logic_vector(countery);
+			vde 	<= s_vde;
+			hsync 	<= s_hsync;
+			vsync 	<= s_vsync;	
+		end if;		
+	end process;
+	vhsync <= vsync & hsync;
+end architecture;

@@ -1,0 +1,33 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -vlog01compat -work work +incdir+D:/intelFPGA_lite/17.0/synth/db {D:/intelFPGA_lite/17.0/synth/db/pll_altpll.v}
+vcom -93 -work work {D:/intelFPGA_lite/17.0/synth/pll.vhd}
+vcom -93 -work work {D:/intelFPGA_lite/17.0/synth/trilut_entity.vhd}
+vcom -93 -work work {D:/intelFPGA_lite/17.0/synth/sinelut_entity.vhd}
+vcom -93 -work work {D:/intelFPGA_lite/17.0/synth/sawlut_entity.vhd}
+vcom -93 -work work {D:/intelFPGA_lite/17.0/synth/sample_clk_gen_entity.vhd}
+vcom -93 -work work {D:/intelFPGA_lite/17.0/synth/pulselut_entity.vhd}
+vcom -93 -work work {D:/intelFPGA_lite/17.0/synth/phaseaccum_entity.vhd}
+vcom -93 -work work {D:/intelFPGA_lite/17.0/synth/pb_debouncer.vhd}
+vcom -93 -work work {D:/intelFPGA_lite/17.0/synth/osc_handler.vhd}
+vcom -93 -work work {D:/intelFPGA_lite/17.0/synth/note_2_pa.vhd}
+vcom -93 -work work {D:/intelFPGA_lite/17.0/synth/mixer_entity.vhd}
+vcom -93 -work work {D:/intelFPGA_lite/17.0/synth/midi_decoder.vhd}
+vcom -93 -work work {D:/intelFPGA_lite/17.0/synth/hex2seg.vhd}
+vcom -93 -work work {D:/intelFPGA_lite/17.0/synth/dds.vhd}
+vcom -93 -work work {D:/intelFPGA_lite/17.0/synth/buttons.vhd}
+vcom -93 -work work {D:/intelFPGA_lite/17.0/synth/synth.vhd}
+
+vcom -93 -work work {D:/intelFPGA_lite/17.0/synth/simulation/modelsim/synth_tb.vhd}
+
+vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs="+acc"  synth_tb
+
+add wave *
+view structure
+view signals
+run -all

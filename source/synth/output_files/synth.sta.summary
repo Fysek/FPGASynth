@@ -1,0 +1,125 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|local_clk'
+Slack : -5.082
+TNS   : -316.365
+
+Type  : Slow 1200mV 85C Model Setup 'DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|local_clk'
+Slack : -5.051
+TNS   : -415.034
+
+Type  : Slow 1200mV 85C Model Setup 'PLL_INST|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.060
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'PLL_INST|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -0.451
+TNS   : -0.902
+
+Type  : Slow 1200mV 85C Model Hold 'DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|local_clk'
+Slack : 0.485
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|local_clk'
+Slack : 0.659
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|local_clk'
+Slack : -1.487
+TNS   : -233.459
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|local_clk'
+Slack : -1.487
+TNS   : -185.875
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'PLL_INST|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 9.722
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLK'
+Slack : 49.898
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|local_clk'
+Slack : -4.811
+TNS   : -297.001
+
+Type  : Slow 1200mV 0C Model Setup 'DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|local_clk'
+Slack : -4.774
+TNS   : -387.134
+
+Type  : Slow 1200mV 0C Model Setup 'PLL_INST|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.160
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'PLL_INST|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -0.473
+TNS   : -0.946
+
+Type  : Slow 1200mV 0C Model Hold 'DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|local_clk'
+Slack : 0.457
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|local_clk'
+Slack : 0.589
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|local_clk'
+Slack : -1.487
+TNS   : -233.459
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|local_clk'
+Slack : -1.487
+TNS   : -185.875
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'PLL_INST|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 9.696
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLK'
+Slack : 49.903
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|local_clk'
+Slack : -1.696
+TNS   : -117.772
+
+Type  : Fast 1200mV 0C Model Setup 'DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|local_clk'
+Slack : -1.686
+TNS   : -90.294
+
+Type  : Fast 1200mV 0C Model Setup 'PLL_INST|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.240
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'PLL_INST|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -0.251
+TNS   : -0.502
+
+Type  : Fast 1200mV 0C Model Hold 'DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|local_clk'
+Slack : 0.164
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|local_clk'
+Slack : 0.227
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|local_clk'
+Slack : -1.000
+TNS   : -157.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|local_clk'
+Slack : -1.000
+TNS   : -125.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'PLL_INST|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 9.758
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLK'
+Slack : 49.646
+TNS   : 0.000
+
+------------------------------------------------------------

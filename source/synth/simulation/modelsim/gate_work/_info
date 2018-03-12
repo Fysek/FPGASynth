@@ -1,0 +1,108 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/intelFPGA_lite/17.0/synth/simulation/modelsim
+Esynth
+Z1 w1515369906
+Z2 DPx11 fiftyfivenm 21 fiftyfivenm_atom_pack 0 22 QU]SmECo2a[Hl8eBXbHMn2
+Z3 DPx11 fiftyfivenm 22 fiftyfivenm_components 0 22 Yd>JAFC2WgIA]bMk>i3Vn1
+Z4 DPx4 ieee 16 vital_primitives 0 22 G>kiXP8Q9dRClKfK1Zn7j1
+Z5 DPx6 altera 11 dffeas_pack 0 22 >EJOc2K4@P4f?njWHdOcd0
+Z6 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
+Z7 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z8 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z9 DPx6 altera 28 altera_primitives_components 0 22 14j`ZKHCzSI;]V?hmAE6_1
+R0
+Z10 8synth.vho
+Z11 Fsynth.vho
+l0
+L37
+VUTiJWfW>gPU_eQjGRo_>`3
+!s100 N^YNofczJXU]iAGVY0TPE2
+Z12 OV;C;10.5b;63
+31
+!s110 1515369920
+!i10b 1
+Z13 !s108 1515369920.000000
+Z14 !s90 -reportprogress|300|-93|-work|work|synth.vho|
+Z15 !s107 synth.vho|
+!i113 1
+Z16 o-93 -work work
+Z17 tExplicit 1 CvgOpt 0
+Astructure
+R2
+R3
+R4
+R5
+R6
+R7
+R8
+R9
+DEx4 work 5 synth 0 22 UTiJWfW>gPU_eQjGRo_>`3
+l1891
+L112
+V>AQGo@7EbWX;Mh`MYcF<^2
+!s100 Va2f:5Y5Ka@UDP6Pfb28T0
+R12
+31
+Z18 !s110 1515369921
+!i10b 1
+R13
+R14
+R15
+!i113 1
+R16
+R17
+Esynth_tb
+Z19 w1515369835
+Z20 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z21 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
+Z22 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+R8
+R7
+Z23 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+R0
+Z24 8D:/intelFPGA_lite/17.0/synth/simulation/modelsim/synth_tb.vhd
+Z25 FD:/intelFPGA_lite/17.0/synth/simulation/modelsim/synth_tb.vhd
+l0
+L10
+V7?]2N7aW1XLP[f;ecjLdN3
+!s100 j73WOVY8melEoPAY^@QMA2
+R12
+31
+R18
+!i10b 1
+Z26 !s108 1515369921.000000
+Z27 !s90 -reportprogress|300|-93|-work|work|D:/intelFPGA_lite/17.0/synth/simulation/modelsim/synth_tb.vhd|
+Z28 !s107 D:/intelFPGA_lite/17.0/synth/simulation/modelsim/synth_tb.vhd|
+!i113 1
+R16
+R17
+Asynth_tb_arch
+R20
+R21
+R22
+R8
+R7
+R23
+DEx4 work 8 synth_tb 0 22 7?]2N7aW1XLP[f;ecjLdN3
+l40
+L13
+VZJM92_m[gF;MNbJ>P8C@h3
+!s100 c_5L_PlAYL;>Va;N2f=^Y3
+R12
+31
+R18
+!i10b 1
+R26
+R27
+R28
+!i113 1
+R16
+R17

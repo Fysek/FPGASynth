@@ -1,0 +1,1425 @@
+Analysis & Synthesis report for synth
+Sun Jan 14 18:07:34 2018
+Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. Removed Registers Triggering Further Register Optimizations
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: Top-level Entity: |synth
+ 13. Parameter Settings for User Entity Instance: pll:PLL_INST|altpll:altpll_component
+ 14. Parameter Settings for User Entity Instance: DDS:OSC1_INST
+ 15. Parameter Settings for User Entity Instance: DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST
+ 16. Parameter Settings for User Entity Instance: DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST
+ 17. Parameter Settings for User Entity Instance: DDS:OSC1_INST|phaseaccum_entity:PA_INST
+ 18. Parameter Settings for User Entity Instance: DDS:OSC1_INST|sinelut_entity:SINE_INST
+ 19. Parameter Settings for User Entity Instance: DDS:OSC1_INST|pulselut_entity:PULSE_INST
+ 20. Parameter Settings for User Entity Instance: DDS:OSC1_INST|sawlut_entity:SAW_INST
+ 21. Parameter Settings for User Entity Instance: DDS:OSC1_INST|trilut_entity:TRI_INST
+ 22. Parameter Settings for User Entity Instance: DDS:OSC2_INST
+ 23. Parameter Settings for User Entity Instance: DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST
+ 24. Parameter Settings for User Entity Instance: DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST
+ 25. Parameter Settings for User Entity Instance: DDS:OSC2_INST|phaseaccum_entity:PA_INST
+ 26. Parameter Settings for User Entity Instance: DDS:OSC2_INST|sinelut_entity:SINE_INST
+ 27. Parameter Settings for User Entity Instance: DDS:OSC2_INST|pulselut_entity:PULSE_INST
+ 28. Parameter Settings for User Entity Instance: DDS:OSC2_INST|sawlut_entity:SAW_INST
+ 29. Parameter Settings for User Entity Instance: DDS:OSC2_INST|trilut_entity:TRI_INST
+ 30. Parameter Settings for User Entity Instance: mixer_entity:MIXER_INST
+ 31. altpll Parameter Settings by Entity Instance
+ 32. Port Connectivity Checks: "DDS:OSC2_INST"
+ 33. Post-Synthesis Netlist Statistics for Top Partition
+ 34. Elapsed Time Per Partition
+ 35. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Intel and sold by Intel or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sun Jan 14 18:07:34 2018       ;
+; Quartus Prime Version              ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
+; Revision Name                      ; synth                                       ;
+; Top-level Entity Name              ; synth                                       ;
+; Family                             ; MAX 10                                      ;
+; Total logic elements               ; 1,559                                       ;
+;     Total combinational functions  ; 1,412                                       ;
+;     Dedicated logic registers      ; 431                                         ;
+; Total registers                    ; 431                                         ;
+; Total pins                         ; 59                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 1                                           ;
+; UFM blocks                         ; 0                                           ;
+; ADC blocks                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; 10M08DAF256C8GES   ;                    ;
+; Top-level entity name                                                      ; synth              ; synth              ;
+; Family name                                                                ; MAX 10             ; Cyclone V          ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; OpenCore Plus hardware evaluation                                          ; Enable             ; Enable             ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                 ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                             ; Library ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------+---------+
+; pll.vhd                          ; yes             ; User Wizard-Generated File   ; D:/intelFPGA_lite/17.0/synth/pll.vhd                                     ;         ;
+; trilut_entity.vhd                ; yes             ; User VHDL File               ; D:/intelFPGA_lite/17.0/synth/trilut_entity.vhd                           ;         ;
+; synth.vhd                        ; yes             ; User VHDL File               ; D:/intelFPGA_lite/17.0/synth/synth.vhd                                   ;         ;
+; sinelut_entity.vhd               ; yes             ; User VHDL File               ; D:/intelFPGA_lite/17.0/synth/sinelut_entity.vhd                          ;         ;
+; sawlut_entity.vhd                ; yes             ; User VHDL File               ; D:/intelFPGA_lite/17.0/synth/sawlut_entity.vhd                           ;         ;
+; sample_clk_gen_entity.vhd        ; yes             ; User VHDL File               ; D:/intelFPGA_lite/17.0/synth/sample_clk_gen_entity.vhd                   ;         ;
+; pulselut_entity.vhd              ; yes             ; User VHDL File               ; D:/intelFPGA_lite/17.0/synth/pulselut_entity.vhd                         ;         ;
+; phaseaccum_entity.vhd            ; yes             ; User VHDL File               ; D:/intelFPGA_lite/17.0/synth/phaseaccum_entity.vhd                       ;         ;
+; pb_debouncer.vhd                 ; yes             ; User VHDL File               ; D:/intelFPGA_lite/17.0/synth/pb_debouncer.vhd                            ;         ;
+; osc_handler.vhd                  ; yes             ; User VHDL File               ; D:/intelFPGA_lite/17.0/synth/osc_handler.vhd                             ;         ;
+; note_2_pa.vhd                    ; yes             ; User VHDL File               ; D:/intelFPGA_lite/17.0/synth/note_2_pa.vhd                               ;         ;
+; mixer_entity.vhd                 ; yes             ; User VHDL File               ; D:/intelFPGA_lite/17.0/synth/mixer_entity.vhd                            ;         ;
+; midi_decoder.vhd                 ; yes             ; User VHDL File               ; D:/intelFPGA_lite/17.0/synth/midi_decoder.vhd                            ;         ;
+; hex2seg.vhd                      ; yes             ; User VHDL File               ; D:/intelFPGA_lite/17.0/synth/hex2seg.vhd                                 ;         ;
+; dds.vhd                          ; yes             ; User VHDL File               ; D:/intelFPGA_lite/17.0/synth/dds.vhd                                     ;         ;
+; buttons.vhd                      ; yes             ; User VHDL File               ; D:/intelFPGA_lite/17.0/synth/buttons.vhd                                 ;         ;
+; altpll.tdf                       ; yes             ; Megafunction                 ; d:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altpll.tdf        ;         ;
+; aglobal170.inc                   ; yes             ; Megafunction                 ; d:/intelfpga_lite/17.0/quartus/libraries/megafunctions/aglobal170.inc    ;         ;
+; stratix_pll.inc                  ; yes             ; Megafunction                 ; d:/intelfpga_lite/17.0/quartus/libraries/megafunctions/stratix_pll.inc   ;         ;
+; stratixii_pll.inc                ; yes             ; Megafunction                 ; d:/intelfpga_lite/17.0/quartus/libraries/megafunctions/stratixii_pll.inc ;         ;
+; cycloneii_pll.inc                ; yes             ; Megafunction                 ; d:/intelfpga_lite/17.0/quartus/libraries/megafunctions/cycloneii_pll.inc ;         ;
+; db/pll_altpll.v                  ; yes             ; Auto-Generated Megafunction  ; D:/intelFPGA_lite/17.0/synth/db/pll_altpll.v                             ;         ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary               ;
++---------------------------------------------+-------------+
+; Resource                                    ; Usage       ;
++---------------------------------------------+-------------+
+; Estimated Total logic elements              ; 1,559       ;
+;                                             ;             ;
+; Total combinational functions               ; 1412        ;
+; Logic element usage by number of LUT inputs ;             ;
+;     -- 4 input functions                    ; 1059        ;
+;     -- 3 input functions                    ; 193         ;
+;     -- <=2 input functions                  ; 160         ;
+;                                             ;             ;
+; Logic elements by mode                      ;             ;
+;     -- normal mode                          ; 1237        ;
+;     -- arithmetic mode                      ; 175         ;
+;                                             ;             ;
+; Total registers                             ; 431         ;
+;     -- Dedicated logic registers            ; 431         ;
+;     -- I/O registers                        ; 0           ;
+;                                             ;             ;
+; I/O pins                                    ; 59          ;
+;                                             ;             ;
+; Embedded Multiplier 9-bit elements          ; 0           ;
+;                                             ;             ;
+; Total PLLs                                  ; 1           ;
+;     -- PLLs                                 ; 1           ;
+;                                             ;             ;
+; Maximum fan-out node                        ; RESET~input ;
+; Maximum fan-out                             ; 395         ;
+; Total fan-out                               ; 6601        ;
+; Average fan-out                             ; 3.36        ;
++---------------------------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                               ;
++-----------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------+-----------------------+--------------+
+; Compilation Hierarchy Node                    ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                   ; Entity Name           ; Library Name ;
++-----------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------+-----------------------+--------------+
+; |synth                                        ; 1412 (0)            ; 431 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 59   ; 0            ; 0          ; |synth                                                                ; synth                 ; work         ;
+;    |DDS:OSC1_INST|                            ; 796 (0)             ; 189 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|DDS:OSC1_INST                                                  ; DDS                   ; work         ;
+;       |NOTE_2_PA:NOTE_TO_PA_INST|             ; 346 (346)           ; 31 (31)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST                        ; NOTE_2_PA             ; work         ;
+;       |phaseaccum_entity:PA_INST|             ; 40 (40)             ; 40 (40)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|DDS:OSC1_INST|phaseaccum_entity:PA_INST                        ; phaseaccum_entity     ; work         ;
+;       |pulselut_entity:PULSE_INST|            ; 1 (1)               ; 5 (5)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|DDS:OSC1_INST|pulselut_entity:PULSE_INST                       ; pulselut_entity       ; work         ;
+;       |sample_clk_gen_entity:SAMPLE_CLK_INST| ; 44 (44)             ; 33 (33)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST            ; sample_clk_gen_entity ; work         ;
+;       |sawlut_entity:SAW_INST|                ; 61 (61)             ; 28 (28)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|DDS:OSC1_INST|sawlut_entity:SAW_INST                           ; sawlut_entity         ; work         ;
+;       |sinelut_entity:SINE_INST|              ; 243 (243)           ; 28 (28)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|DDS:OSC1_INST|sinelut_entity:SINE_INST                         ; sinelut_entity        ; work         ;
+;       |trilut_entity:TRI_INST|                ; 61 (61)             ; 24 (24)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|DDS:OSC1_INST|trilut_entity:TRI_INST                           ; trilut_entity         ; work         ;
+;    |DDS:OSC2_INST|                            ; 418 (0)             ; 126 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|DDS:OSC2_INST                                                  ; DDS                   ; work         ;
+;       |phaseaccum_entity:PA_INST|             ; 50 (50)             ; 40 (40)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|DDS:OSC2_INST|phaseaccum_entity:PA_INST                        ; phaseaccum_entity     ; work         ;
+;       |pulselut_entity:PULSE_INST|            ; 1 (1)               ; 5 (5)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|DDS:OSC2_INST|pulselut_entity:PULSE_INST                       ; pulselut_entity       ; work         ;
+;       |sample_clk_gen_entity:SAMPLE_CLK_INST| ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST            ; sample_clk_gen_entity ; work         ;
+;       |sawlut_entity:SAW_INST|                ; 61 (61)             ; 28 (28)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|DDS:OSC2_INST|sawlut_entity:SAW_INST                           ; sawlut_entity         ; work         ;
+;       |sinelut_entity:SINE_INST|              ; 242 (242)           ; 28 (28)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|DDS:OSC2_INST|sinelut_entity:SINE_INST                         ; sinelut_entity        ; work         ;
+;       |trilut_entity:TRI_INST|                ; 63 (63)             ; 24 (24)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|DDS:OSC2_INST|trilut_entity:TRI_INST                           ; trilut_entity         ; work         ;
+;    |buttons:BUTTONS_INST|                     ; 67 (12)             ; 42 (8)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|buttons:BUTTONS_INST                                           ; buttons               ; work         ;
+;       |pb_debouncer:BTN_L_DBNC_INST|          ; 54 (54)             ; 33 (33)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST              ; pb_debouncer          ; work         ;
+;       |pb_debouncer:BTN_R_DBNC_INST|          ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST              ; pb_debouncer          ; work         ;
+;    |hex2seg:HEX2SEG_INST|                     ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|hex2seg:HEX2SEG_INST                                           ; hex2seg               ; work         ;
+;    |midi_decoder:MIDI_DECODER_INST|           ; 2 (2)               ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|midi_decoder:MIDI_DECODER_INST                                 ; midi_decoder          ; work         ;
+;    |mixer_entity:MIXER_INST|                  ; 110 (110)           ; 32 (32)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|mixer_entity:MIXER_INST                                        ; mixer_entity          ; work         ;
+;    |osc_handler:OSC_HANDLER_INST|             ; 10 (10)             ; 24 (24)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|osc_handler:OSC_HANDLER_INST                                   ; osc_handler           ; work         ;
+;    |pb_debouncer:DEBOUNCER_INST_0|            ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|pb_debouncer:DEBOUNCER_INST_0                                  ; pb_debouncer          ; work         ;
+;    |pb_debouncer:DEBOUNCER_INST_1|            ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|pb_debouncer:DEBOUNCER_INST_1                                  ; pb_debouncer          ; work         ;
+;    |pll:PLL_INST|                             ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|pll:PLL_INST                                                   ; pll                   ; work         ;
+;       |altpll:altpll_component|               ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|pll:PLL_INST|altpll:altpll_component                           ; altpll                ; work         ;
+;          |pll_altpll:auto_generated|          ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |synth|pll:PLL_INST|altpll:altpll_component|pll_altpll:auto_generated ; pll_altpll            ; work         ;
++-----------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------+-----------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                        ;
++---------------------------------------------------------------+---------------------------------------------------------------------------+
+; Register name                                                 ; Reason for Removal                                                        ;
++---------------------------------------------------------------+---------------------------------------------------------------------------+
+; DDS:OSC2_INST|trilut_entity:TRI_INST|sDATA[0]                 ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC2_INST|trilut_entity:TRI_INST|DATA[0]                  ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC2_INST|trilut_entity:TRI_INST|sDATA[1]                 ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC2_INST|sawlut_entity:SAW_INST|sDATA[0]                 ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC2_INST|sawlut_entity:SAW_INST|DATA[0]                  ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC2_INST|pulselut_entity:PULSE_INST|sDATA[0]             ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC2_INST|pulselut_entity:PULSE_INST|DATA[0]              ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC2_INST|pulselut_entity:PULSE_INST|sDATA[8]             ; Stuck at VCC due to stuck port data_in                                    ;
+; DDS:OSC2_INST|pulselut_entity:PULSE_INST|sDATA[1..7]          ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC2_INST|sinelut_entity:SINE_INST|sDATA[0]               ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC2_INST|sinelut_entity:SINE_INST|DATA[0]                ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC2_INST|sinelut_entity:SINE_INST|sDATA[1]               ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[31]           ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC1_INST|trilut_entity:TRI_INST|sDATA[0]                 ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC1_INST|trilut_entity:TRI_INST|DATA[0]                  ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC1_INST|trilut_entity:TRI_INST|sDATA[1]                 ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC1_INST|sawlut_entity:SAW_INST|sDATA[0]                 ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC1_INST|sawlut_entity:SAW_INST|DATA[0]                  ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC1_INST|pulselut_entity:PULSE_INST|sDATA[0]             ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC1_INST|pulselut_entity:PULSE_INST|DATA[0]              ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC1_INST|pulselut_entity:PULSE_INST|sDATA[8]             ; Stuck at VCC due to stuck port data_in                                    ;
+; DDS:OSC1_INST|pulselut_entity:PULSE_INST|sDATA[1..7]          ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC1_INST|sinelut_entity:SINE_INST|sDATA[0]               ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC1_INST|sinelut_entity:SINE_INST|DATA[0]                ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC1_INST|sinelut_entity:SINE_INST|sDATA[1]               ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[31]           ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC2_INST|trilut_entity:TRI_INST|DATA[1]                  ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC2_INST|pulselut_entity:PULSE_INST|DATA[1..7]           ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC2_INST|sinelut_entity:SINE_INST|DATA[1]                ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC1_INST|trilut_entity:TRI_INST|DATA[1]                  ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC1_INST|pulselut_entity:PULSE_INST|DATA[1..7]           ; Stuck at GND due to stuck port data_in                                    ;
+; DDS:OSC1_INST|sinelut_entity:SINE_INST|DATA[1]                ; Stuck at GND due to stuck port data_in                                    ;
+; osc_handler:OSC_HANDLER_INST|anote1[7]                        ; Merged with osc_handler:OSC_HANDLER_INST|anote0[7]                        ;
+; osc_handler:OSC_HANDLER_INST|anote1[6]                        ; Merged with osc_handler:OSC_HANDLER_INST|anote0[6]                        ;
+; osc_handler:OSC_HANDLER_INST|anote1[5]                        ; Merged with osc_handler:OSC_HANDLER_INST|anote0[5]                        ;
+; osc_handler:OSC_HANDLER_INST|anote1[4]                        ; Merged with osc_handler:OSC_HANDLER_INST|anote0[4]                        ;
+; osc_handler:OSC_HANDLER_INST|anote1[3]                        ; Merged with osc_handler:OSC_HANDLER_INST|anote0[3]                        ;
+; osc_handler:OSC_HANDLER_INST|anote1[2]                        ; Merged with osc_handler:OSC_HANDLER_INST|anote0[2]                        ;
+; osc_handler:OSC_HANDLER_INST|anote1[1]                        ; Merged with osc_handler:OSC_HANDLER_INST|anote0[1]                        ;
+; osc_handler:OSC_HANDLER_INST|anote1[0]                        ; Merged with osc_handler:OSC_HANDLER_INST|anote0[0]                        ;
+; DDS:OSC2_INST|trilut_entity:TRI_INST|DATA[15]                 ; Merged with DDS:OSC2_INST|sinelut_entity:SINE_INST|DATA[15]               ;
+; DDS:OSC2_INST|pulselut_entity:PULSE_INST|DATA[9]              ; Merged with DDS:OSC2_INST|pulselut_entity:PULSE_INST|DATA[15]             ;
+; DDS:OSC2_INST|pulselut_entity:PULSE_INST|DATA[11..14]         ; Merged with DDS:OSC2_INST|pulselut_entity:PULSE_INST|DATA[10]             ;
+; DDS:OSC2_INST|trilut_entity:TRI_INST|DATA[2]                  ; Merged with DDS:OSC2_INST|sawlut_entity:SAW_INST|DATA[1]                  ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[31] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[31] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[30] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[30] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[29] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[29] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[28] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[28] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[27] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[27] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[26] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[26] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[25] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[25] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[24] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[24] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[23] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[23] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[22] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[22] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[21] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[21] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[20] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[20] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[19] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[19] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[18] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[18] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[17] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[17] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[16] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[16] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[15] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[15] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[14] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[14] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[13] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[13] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[12] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[12] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[11] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[11] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[10] ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[10] ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[8]  ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[8]  ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[7]  ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[7]  ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[6]  ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[6]  ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[5]  ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[5]  ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[4]  ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[4]  ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[3]  ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[3]  ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[2]  ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[2]  ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[1]  ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[1]  ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[0]  ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[0]  ;
+; DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[9]  ; Merged with DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST|count[9]  ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[31] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[31] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[31]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[31] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[31]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[31] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[30] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[30] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[30]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[30] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[30]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[30] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[29] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[29] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[29]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[29] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[29]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[29] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[28] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[28] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[28]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[28] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[28]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[28] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[27] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[27] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[27]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[27] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[27]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[27] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[26] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[26] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[26]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[26] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[26]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[26] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[25] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[25] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[25]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[25] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[25]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[25] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[24] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[24] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[24]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[24] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[24]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[24] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[23] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[23] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[23]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[23] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[23]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[23] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[22] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[22] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[22]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[22] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[22]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[22] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[21] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[21] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[21]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[21] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[21]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[21] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[20] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[20] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[20]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[20] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[20]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[20] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[19] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[19] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[19]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[19] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[19]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[19] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[18] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[18] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[18]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[18] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[18]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[18] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[17] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[17] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[17]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[17] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[17]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[17] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[16] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[16] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[16]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[16] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[16]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[16] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[15] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[15] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[15]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[15] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[15]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[15] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[14] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[14] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[14]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[14] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[14]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[14] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[13] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[13] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[13]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[13] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[13]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[13] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[12] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[12] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[12]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[12] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[12]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[12] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[11] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[11] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[11]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[11] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[11]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[11] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[10] ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[10] ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[10]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[10] ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[10]                     ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[10] ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[9]  ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[9]  ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[9]                      ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[9]  ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[9]                      ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[9]  ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[8]  ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[8]  ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[8]                      ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[8]  ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[8]                      ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[8]  ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[7]  ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[7]  ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[7]                      ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[7]  ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[7]                      ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[7]  ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[6]  ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[6]  ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[6]                      ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[6]  ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[6]                      ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[6]  ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[5]  ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[5]  ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[5]                      ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[5]  ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[5]                      ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[5]  ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[4]  ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[4]  ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[4]                      ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[4]  ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[4]                      ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[4]  ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[3]  ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[3]  ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[3]                      ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[3]  ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[3]                      ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[3]  ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[2]  ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[2]  ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[2]                      ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[2]  ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[2]                      ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[2]  ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[1]  ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[1]  ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[1]                      ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[1]  ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[1]                      ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[1]  ;
+; buttons:BUTTONS_INST|pb_debouncer:BTN_R_DBNC_INST|DIVIDER[0]  ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[0]  ;
+; pb_debouncer:DEBOUNCER_INST_0|DIVIDER[0]                      ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[0]  ;
+; pb_debouncer:DEBOUNCER_INST_1|DIVIDER[0]                      ; Merged with buttons:BUTTONS_INST|pb_debouncer:BTN_L_DBNC_INST|DIVIDER[0]  ;
+; DDS:OSC2_INST|trilut_entity:TRI_INST|sDATA[15]                ; Merged with DDS:OSC2_INST|sinelut_entity:SINE_INST|sDATA[15]              ;
+; DDS:OSC2_INST|pulselut_entity:PULSE_INST|sDATA[9]             ; Merged with DDS:OSC2_INST|pulselut_entity:PULSE_INST|sDATA[15]            ;
+; DDS:OSC2_INST|trilut_entity:TRI_INST|sDATA[2]                 ; Merged with DDS:OSC2_INST|sawlut_entity:SAW_INST|sDATA[1]                 ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[30]           ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[30]           ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[29]           ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[29]           ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[28]           ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[28]           ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[27]           ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[27]           ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[26]           ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[26]           ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[25]           ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[25]           ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[24]           ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[24]           ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[23]           ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[23]           ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[22]           ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[22]           ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[21]           ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[21]           ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[20]           ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[20]           ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[19]           ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[19]           ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[15]           ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[15]           ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[14]           ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[14]           ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[9]            ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[9]            ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[4]            ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[4]            ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[1]            ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[1]            ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[0]            ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[0]            ;
+; osc_handler:OSC_HANDLER_INST|note1[6]                         ; Merged with osc_handler:OSC_HANDLER_INST|note0[6]                         ;
+; osc_handler:OSC_HANDLER_INST|note1[5]                         ; Merged with osc_handler:OSC_HANDLER_INST|note0[5]                         ;
+; osc_handler:OSC_HANDLER_INST|note1[4]                         ; Merged with osc_handler:OSC_HANDLER_INST|note0[4]                         ;
+; osc_handler:OSC_HANDLER_INST|note1[3]                         ; Merged with osc_handler:OSC_HANDLER_INST|note0[3]                         ;
+; osc_handler:OSC_HANDLER_INST|note1[2]                         ; Merged with osc_handler:OSC_HANDLER_INST|note0[2]                         ;
+; osc_handler:OSC_HANDLER_INST|note1[1]                         ; Merged with osc_handler:OSC_HANDLER_INST|note0[1]                         ;
+; osc_handler:OSC_HANDLER_INST|note1[0]                         ; Merged with osc_handler:OSC_HANDLER_INST|note0[0]                         ;
+; osc_handler:OSC_HANDLER_INST|enable1                          ; Merged with osc_handler:OSC_HANDLER_INST|enable0                          ;
+; DDS:OSC1_INST|trilut_entity:TRI_INST|DATA[15]                 ; Merged with DDS:OSC1_INST|sinelut_entity:SINE_INST|DATA[15]               ;
+; DDS:OSC1_INST|pulselut_entity:PULSE_INST|DATA[9]              ; Merged with DDS:OSC1_INST|pulselut_entity:PULSE_INST|DATA[15]             ;
+; DDS:OSC1_INST|pulselut_entity:PULSE_INST|DATA[11..14]         ; Merged with DDS:OSC1_INST|pulselut_entity:PULSE_INST|DATA[10]             ;
+; DDS:OSC1_INST|trilut_entity:TRI_INST|DATA[2]                  ; Merged with DDS:OSC1_INST|sawlut_entity:SAW_INST|DATA[1]                  ;
+; DDS:OSC2_INST|pulselut_entity:PULSE_INST|sDATA[11..14]        ; Merged with DDS:OSC2_INST|pulselut_entity:PULSE_INST|sDATA[10]            ;
+; DDS:OSC1_INST|trilut_entity:TRI_INST|sDATA[15]                ; Merged with DDS:OSC1_INST|sinelut_entity:SINE_INST|sDATA[15]              ;
+; DDS:OSC1_INST|pulselut_entity:PULSE_INST|sDATA[9]             ; Merged with DDS:OSC1_INST|pulselut_entity:PULSE_INST|sDATA[15]            ;
+; DDS:OSC1_INST|pulselut_entity:PULSE_INST|sDATA[11..14]        ; Merged with DDS:OSC1_INST|pulselut_entity:PULSE_INST|sDATA[10]            ;
+; DDS:OSC1_INST|trilut_entity:TRI_INST|sDATA[2]                 ; Merged with DDS:OSC1_INST|sawlut_entity:SAW_INST|sDATA[1]                 ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[18]           ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[18]           ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[17]           ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[17]           ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[16]           ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[16]           ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[13]           ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[13]           ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[12]           ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[12]           ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[11]           ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[11]           ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[10]           ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[10]           ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[8]            ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[8]            ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[7]            ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[7]            ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[6]            ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[6]            ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[5]            ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[5]            ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[3]            ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[3]            ;
+; DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[2]            ; Merged with DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST|PA_word[2]            ;
+; DDS:OSC2_INST|sawlut_entity:SAW_INST|DATA[15]                 ; Merged with DDS:OSC2_INST|pulselut_entity:PULSE_INST|DATA[15]             ;
+; DDS:OSC2_INST|sawlut_entity:SAW_INST|sDATA[15]                ; Merged with DDS:OSC2_INST|pulselut_entity:PULSE_INST|sDATA[15]            ;
+; DDS:OSC1_INST|sawlut_entity:SAW_INST|DATA[15]                 ; Merged with DDS:OSC1_INST|pulselut_entity:PULSE_INST|DATA[15]             ;
+; DDS:OSC1_INST|sawlut_entity:SAW_INST|sDATA[15]                ; Merged with DDS:OSC1_INST|pulselut_entity:PULSE_INST|sDATA[15]            ;
+; Total Number of Removed Registers = 263                       ;                                                                           ;
++---------------------------------------------------------------+---------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                      ;
++---------------------------------------------------+---------------------------+--------------------------------------------------+
+; Register name                                     ; Reason for Removal        ; Registers Removed due to This Register           ;
++---------------------------------------------------+---------------------------+--------------------------------------------------+
+; DDS:OSC2_INST|trilut_entity:TRI_INST|sDATA[0]     ; Stuck at GND              ; DDS:OSC2_INST|trilut_entity:TRI_INST|DATA[0]     ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC2_INST|trilut_entity:TRI_INST|sDATA[1]     ; Stuck at GND              ; DDS:OSC2_INST|trilut_entity:TRI_INST|DATA[1]     ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC2_INST|sawlut_entity:SAW_INST|sDATA[0]     ; Stuck at GND              ; DDS:OSC2_INST|sawlut_entity:SAW_INST|DATA[0]     ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC2_INST|pulselut_entity:PULSE_INST|sDATA[0] ; Stuck at GND              ; DDS:OSC2_INST|pulselut_entity:PULSE_INST|DATA[0] ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC2_INST|pulselut_entity:PULSE_INST|sDATA[7] ; Stuck at GND              ; DDS:OSC2_INST|pulselut_entity:PULSE_INST|DATA[7] ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC2_INST|pulselut_entity:PULSE_INST|sDATA[6] ; Stuck at GND              ; DDS:OSC2_INST|pulselut_entity:PULSE_INST|DATA[6] ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC2_INST|pulselut_entity:PULSE_INST|sDATA[5] ; Stuck at GND              ; DDS:OSC2_INST|pulselut_entity:PULSE_INST|DATA[5] ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC2_INST|pulselut_entity:PULSE_INST|sDATA[4] ; Stuck at GND              ; DDS:OSC2_INST|pulselut_entity:PULSE_INST|DATA[4] ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC2_INST|pulselut_entity:PULSE_INST|sDATA[3] ; Stuck at GND              ; DDS:OSC2_INST|pulselut_entity:PULSE_INST|DATA[3] ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC2_INST|pulselut_entity:PULSE_INST|sDATA[2] ; Stuck at GND              ; DDS:OSC2_INST|pulselut_entity:PULSE_INST|DATA[2] ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC2_INST|pulselut_entity:PULSE_INST|sDATA[1] ; Stuck at GND              ; DDS:OSC2_INST|pulselut_entity:PULSE_INST|DATA[1] ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC2_INST|sinelut_entity:SINE_INST|sDATA[0]   ; Stuck at GND              ; DDS:OSC2_INST|sinelut_entity:SINE_INST|DATA[0]   ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC2_INST|sinelut_entity:SINE_INST|sDATA[1]   ; Stuck at GND              ; DDS:OSC2_INST|sinelut_entity:SINE_INST|DATA[1]   ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC1_INST|trilut_entity:TRI_INST|sDATA[0]     ; Stuck at GND              ; DDS:OSC1_INST|trilut_entity:TRI_INST|DATA[0]     ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC1_INST|trilut_entity:TRI_INST|sDATA[1]     ; Stuck at GND              ; DDS:OSC1_INST|trilut_entity:TRI_INST|DATA[1]     ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC1_INST|sawlut_entity:SAW_INST|sDATA[0]     ; Stuck at GND              ; DDS:OSC1_INST|sawlut_entity:SAW_INST|DATA[0]     ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC1_INST|pulselut_entity:PULSE_INST|sDATA[0] ; Stuck at GND              ; DDS:OSC1_INST|pulselut_entity:PULSE_INST|DATA[0] ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC1_INST|pulselut_entity:PULSE_INST|sDATA[7] ; Stuck at GND              ; DDS:OSC1_INST|pulselut_entity:PULSE_INST|DATA[7] ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC1_INST|pulselut_entity:PULSE_INST|sDATA[6] ; Stuck at GND              ; DDS:OSC1_INST|pulselut_entity:PULSE_INST|DATA[6] ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC1_INST|pulselut_entity:PULSE_INST|sDATA[5] ; Stuck at GND              ; DDS:OSC1_INST|pulselut_entity:PULSE_INST|DATA[5] ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC1_INST|pulselut_entity:PULSE_INST|sDATA[4] ; Stuck at GND              ; DDS:OSC1_INST|pulselut_entity:PULSE_INST|DATA[4] ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC1_INST|pulselut_entity:PULSE_INST|sDATA[3] ; Stuck at GND              ; DDS:OSC1_INST|pulselut_entity:PULSE_INST|DATA[3] ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC1_INST|pulselut_entity:PULSE_INST|sDATA[2] ; Stuck at GND              ; DDS:OSC1_INST|pulselut_entity:PULSE_INST|DATA[2] ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC1_INST|pulselut_entity:PULSE_INST|sDATA[1] ; Stuck at GND              ; DDS:OSC1_INST|pulselut_entity:PULSE_INST|DATA[1] ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC1_INST|sinelut_entity:SINE_INST|sDATA[0]   ; Stuck at GND              ; DDS:OSC1_INST|sinelut_entity:SINE_INST|DATA[0]   ;
+;                                                   ; due to stuck port data_in ;                                                  ;
+; DDS:OSC1_INST|sinelut_entity:SINE_INST|sDATA[1]   ; Stuck at GND              ; DDS:OSC1_INST|sinelut_entity:SINE_INST|DATA[1]   ;
+;                                                   ; due to stuck port data_in ;                                                  ;
++---------------------------------------------------+---------------------------+--------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 431   ;
+; Number of registers using Synchronous Clear  ; 97    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 303   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 133   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |synth|buttons:BUTTONS_INST|cnt[3]   ;
+; 256:1              ; 12 bits   ; 2040 LEs      ; 24 LEs               ; 2016 LEs               ; No         ; |synth|mixer_entity:MIXER_INST|Mux29 ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 4 LEs                ; 336 LEs                ; No         ; |synth|mixer_entity:MIXER_INST|Mux23 ;
+; 130:1              ; 2 bits    ; 172 LEs       ; 4 LEs                ; 168 LEs                ; No         ; |synth|mixer_entity:MIXER_INST|Mux16 ;
+; 130:1              ; 12 bits   ; 1032 LEs      ; 24 LEs               ; 1008 LEs               ; No         ; |synth|mixer_entity:MIXER_INST|Mux22 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |synth ;
++----------------+-------+----------------------------------------------+
+; Parameter Name ; Value ; Type                                         ;
++----------------+-------+----------------------------------------------+
+; lut_bit_width  ; 8     ; Signed Integer                               ;
+; pa_bit_width   ; 32    ; Signed Integer                               ;
++----------------+-------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: pll:PLL_INST|altpll:altpll_component ;
++-------------------------------+-----------------------+---------------------------+
+; Parameter Name                ; Value                 ; Type                      ;
++-------------------------------+-----------------------+---------------------------+
+; OPERATION_MODE                ; NORMAL                ; Untyped                   ;
+; PLL_TYPE                      ; AUTO                  ; Untyped                   ;
+; LPM_HINT                      ; CBX_MODULE_PREFIX=pll ; Untyped                   ;
+; QUALIFY_CONF_DONE             ; OFF                   ; Untyped                   ;
+; COMPENSATE_CLOCK              ; CLK0                  ; Untyped                   ;
+; SCAN_CHAIN                    ; LONG                  ; Untyped                   ;
+; PRIMARY_CLOCK                 ; INCLK0                ; Untyped                   ;
+; INCLK0_INPUT_FREQUENCY        ; 100000                ; Signed Integer            ;
+; INCLK1_INPUT_FREQUENCY        ; 0                     ; Untyped                   ;
+; GATE_LOCK_SIGNAL              ; NO                    ; Untyped                   ;
+; GATE_LOCK_COUNTER             ; 0                     ; Untyped                   ;
+; LOCK_HIGH                     ; 1                     ; Untyped                   ;
+; LOCK_LOW                      ; 1                     ; Untyped                   ;
+; VALID_LOCK_MULTIPLIER         ; 1                     ; Untyped                   ;
+; INVALID_LOCK_MULTIPLIER       ; 5                     ; Untyped                   ;
+; SWITCH_OVER_ON_LOSSCLK        ; OFF                   ; Untyped                   ;
+; SWITCH_OVER_ON_GATED_LOCK     ; OFF                   ; Untyped                   ;
+; ENABLE_SWITCH_OVER_COUNTER    ; OFF                   ; Untyped                   ;
+; SKIP_VCO                      ; OFF                   ; Untyped                   ;
+; SWITCH_OVER_COUNTER           ; 0                     ; Untyped                   ;
+; SWITCH_OVER_TYPE              ; AUTO                  ; Untyped                   ;
+; FEEDBACK_SOURCE               ; EXTCLK0               ; Untyped                   ;
+; BANDWIDTH                     ; 0                     ; Untyped                   ;
+; BANDWIDTH_TYPE                ; AUTO                  ; Untyped                   ;
+; SPREAD_FREQUENCY              ; 0                     ; Untyped                   ;
+; DOWN_SPREAD                   ; 0                     ; Untyped                   ;
+; SELF_RESET_ON_GATED_LOSS_LOCK ; OFF                   ; Untyped                   ;
+; SELF_RESET_ON_LOSS_LOCK       ; OFF                   ; Untyped                   ;
+; CLK9_MULTIPLY_BY              ; 0                     ; Untyped                   ;
+; CLK8_MULTIPLY_BY              ; 0                     ; Untyped                   ;
+; CLK7_MULTIPLY_BY              ; 0                     ; Untyped                   ;
+; CLK6_MULTIPLY_BY              ; 0                     ; Untyped                   ;
+; CLK5_MULTIPLY_BY              ; 1                     ; Untyped                   ;
+; CLK4_MULTIPLY_BY              ; 1                     ; Untyped                   ;
+; CLK3_MULTIPLY_BY              ; 1                     ; Untyped                   ;
+; CLK2_MULTIPLY_BY              ; 1                     ; Untyped                   ;
+; CLK1_MULTIPLY_BY              ; 1                     ; Untyped                   ;
+; CLK0_MULTIPLY_BY              ; 5                     ; Signed Integer            ;
+; CLK9_DIVIDE_BY                ; 0                     ; Untyped                   ;
+; CLK8_DIVIDE_BY                ; 0                     ; Untyped                   ;
+; CLK7_DIVIDE_BY                ; 0                     ; Untyped                   ;
+; CLK6_DIVIDE_BY                ; 0                     ; Untyped                   ;
+; CLK5_DIVIDE_BY                ; 1                     ; Untyped                   ;
+; CLK4_DIVIDE_BY                ; 1                     ; Untyped                   ;
+; CLK3_DIVIDE_BY                ; 1                     ; Untyped                   ;
+; CLK2_DIVIDE_BY                ; 1                     ; Untyped                   ;
+; CLK1_DIVIDE_BY                ; 1                     ; Untyped                   ;
+; CLK0_DIVIDE_BY                ; 1                     ; Signed Integer            ;
+; CLK9_PHASE_SHIFT              ; 0                     ; Untyped                   ;
+; CLK8_PHASE_SHIFT              ; 0                     ; Untyped                   ;
+; CLK7_PHASE_SHIFT              ; 0                     ; Untyped                   ;
+; CLK6_PHASE_SHIFT              ; 0                     ; Untyped                   ;
+; CLK5_PHASE_SHIFT              ; 0                     ; Untyped                   ;
+; CLK4_PHASE_SHIFT              ; 0                     ; Untyped                   ;
+; CLK3_PHASE_SHIFT              ; 0                     ; Untyped                   ;
+; CLK2_PHASE_SHIFT              ; 0                     ; Untyped                   ;
+; CLK1_PHASE_SHIFT              ; 0                     ; Untyped                   ;
+; CLK0_PHASE_SHIFT              ; 0                     ; Untyped                   ;
+; CLK5_TIME_DELAY               ; 0                     ; Untyped                   ;
+; CLK4_TIME_DELAY               ; 0                     ; Untyped                   ;
+; CLK3_TIME_DELAY               ; 0                     ; Untyped                   ;
+; CLK2_TIME_DELAY               ; 0                     ; Untyped                   ;
+; CLK1_TIME_DELAY               ; 0                     ; Untyped                   ;
+; CLK0_TIME_DELAY               ; 0                     ; Untyped                   ;
+; CLK9_DUTY_CYCLE               ; 50                    ; Untyped                   ;
+; CLK8_DUTY_CYCLE               ; 50                    ; Untyped                   ;
+; CLK7_DUTY_CYCLE               ; 50                    ; Untyped                   ;
+; CLK6_DUTY_CYCLE               ; 50                    ; Untyped                   ;
+; CLK5_DUTY_CYCLE               ; 50                    ; Untyped                   ;
+; CLK4_DUTY_CYCLE               ; 50                    ; Untyped                   ;
+; CLK3_DUTY_CYCLE               ; 50                    ; Untyped                   ;
+; CLK2_DUTY_CYCLE               ; 50                    ; Untyped                   ;
+; CLK1_DUTY_CYCLE               ; 50                    ; Untyped                   ;
+; CLK0_DUTY_CYCLE               ; 50                    ; Signed Integer            ;
+; CLK9_USE_EVEN_COUNTER_MODE    ; OFF                   ; Untyped                   ;
+; CLK8_USE_EVEN_COUNTER_MODE    ; OFF                   ; Untyped                   ;
+; CLK7_USE_EVEN_COUNTER_MODE    ; OFF                   ; Untyped                   ;
+; CLK6_USE_EVEN_COUNTER_MODE    ; OFF                   ; Untyped                   ;
+; CLK5_USE_EVEN_COUNTER_MODE    ; OFF                   ; Untyped                   ;
+; CLK4_USE_EVEN_COUNTER_MODE    ; OFF                   ; Untyped                   ;
+; CLK3_USE_EVEN_COUNTER_MODE    ; OFF                   ; Untyped                   ;
+; CLK2_USE_EVEN_COUNTER_MODE    ; OFF                   ; Untyped                   ;
+; CLK1_USE_EVEN_COUNTER_MODE    ; OFF                   ; Untyped                   ;
+; CLK0_USE_EVEN_COUNTER_MODE    ; OFF                   ; Untyped                   ;
+; CLK9_USE_EVEN_COUNTER_VALUE   ; OFF                   ; Untyped                   ;
+; CLK8_USE_EVEN_COUNTER_VALUE   ; OFF                   ; Untyped                   ;
+; CLK7_USE_EVEN_COUNTER_VALUE   ; OFF                   ; Untyped                   ;
+; CLK6_USE_EVEN_COUNTER_VALUE   ; OFF                   ; Untyped                   ;
+; CLK5_USE_EVEN_COUNTER_VALUE   ; OFF                   ; Untyped                   ;
+; CLK4_USE_EVEN_COUNTER_VALUE   ; OFF                   ; Untyped                   ;
+; CLK3_USE_EVEN_COUNTER_VALUE   ; OFF                   ; Untyped                   ;
+; CLK2_USE_EVEN_COUNTER_VALUE   ; OFF                   ; Untyped                   ;
+; CLK1_USE_EVEN_COUNTER_VALUE   ; OFF                   ; Untyped                   ;
+; CLK0_USE_EVEN_COUNTER_VALUE   ; OFF                   ; Untyped                   ;
+; LOCK_WINDOW_UI                ;  0.05                 ; Untyped                   ;
+; LOCK_WINDOW_UI_BITS           ; UNUSED                ; Untyped                   ;
+; VCO_RANGE_DETECTOR_LOW_BITS   ; UNUSED                ; Untyped                   ;
+; VCO_RANGE_DETECTOR_HIGH_BITS  ; UNUSED                ; Untyped                   ;
+; DPA_MULTIPLY_BY               ; 0                     ; Untyped                   ;
+; DPA_DIVIDE_BY                 ; 1                     ; Untyped                   ;
+; DPA_DIVIDER                   ; 0                     ; Untyped                   ;
+; EXTCLK3_MULTIPLY_BY           ; 1                     ; Untyped                   ;
+; EXTCLK2_MULTIPLY_BY           ; 1                     ; Untyped                   ;
+; EXTCLK1_MULTIPLY_BY           ; 1                     ; Untyped                   ;
+; EXTCLK0_MULTIPLY_BY           ; 1                     ; Untyped                   ;
+; EXTCLK3_DIVIDE_BY             ; 1                     ; Untyped                   ;
+; EXTCLK2_DIVIDE_BY             ; 1                     ; Untyped                   ;
+; EXTCLK1_DIVIDE_BY             ; 1                     ; Untyped                   ;
+; EXTCLK0_DIVIDE_BY             ; 1                     ; Untyped                   ;
+; EXTCLK3_PHASE_SHIFT           ; 0                     ; Untyped                   ;
+; EXTCLK2_PHASE_SHIFT           ; 0                     ; Untyped                   ;
+; EXTCLK1_PHASE_SHIFT           ; 0                     ; Untyped                   ;
+; EXTCLK0_PHASE_SHIFT           ; 0                     ; Untyped                   ;
+; EXTCLK3_TIME_DELAY            ; 0                     ; Untyped                   ;
+; EXTCLK2_TIME_DELAY            ; 0                     ; Untyped                   ;
+; EXTCLK1_TIME_DELAY            ; 0                     ; Untyped                   ;
+; EXTCLK0_TIME_DELAY            ; 0                     ; Untyped                   ;
+; EXTCLK3_DUTY_CYCLE            ; 50                    ; Untyped                   ;
+; EXTCLK2_DUTY_CYCLE            ; 50                    ; Untyped                   ;
+; EXTCLK1_DUTY_CYCLE            ; 50                    ; Untyped                   ;
+; EXTCLK0_DUTY_CYCLE            ; 50                    ; Untyped                   ;
+; VCO_MULTIPLY_BY               ; 0                     ; Untyped                   ;
+; VCO_DIVIDE_BY                 ; 0                     ; Untyped                   ;
+; SCLKOUT0_PHASE_SHIFT          ; 0                     ; Untyped                   ;
+; SCLKOUT1_PHASE_SHIFT          ; 0                     ; Untyped                   ;
+; VCO_MIN                       ; 0                     ; Untyped                   ;
+; VCO_MAX                       ; 0                     ; Untyped                   ;
+; VCO_CENTER                    ; 0                     ; Untyped                   ;
+; PFD_MIN                       ; 0                     ; Untyped                   ;
+; PFD_MAX                       ; 0                     ; Untyped                   ;
+; M_INITIAL                     ; 0                     ; Untyped                   ;
+; M                             ; 0                     ; Untyped                   ;
+; N                             ; 1                     ; Untyped                   ;
+; M2                            ; 1                     ; Untyped                   ;
+; N2                            ; 1                     ; Untyped                   ;
+; SS                            ; 1                     ; Untyped                   ;
+; C0_HIGH                       ; 0                     ; Untyped                   ;
+; C1_HIGH                       ; 0                     ; Untyped                   ;
+; C2_HIGH                       ; 0                     ; Untyped                   ;
+; C3_HIGH                       ; 0                     ; Untyped                   ;
+; C4_HIGH                       ; 0                     ; Untyped                   ;
+; C5_HIGH                       ; 0                     ; Untyped                   ;
+; C6_HIGH                       ; 0                     ; Untyped                   ;
+; C7_HIGH                       ; 0                     ; Untyped                   ;
+; C8_HIGH                       ; 0                     ; Untyped                   ;
+; C9_HIGH                       ; 0                     ; Untyped                   ;
+; C0_LOW                        ; 0                     ; Untyped                   ;
+; C1_LOW                        ; 0                     ; Untyped                   ;
+; C2_LOW                        ; 0                     ; Untyped                   ;
+; C3_LOW                        ; 0                     ; Untyped                   ;
+; C4_LOW                        ; 0                     ; Untyped                   ;
+; C5_LOW                        ; 0                     ; Untyped                   ;
+; C6_LOW                        ; 0                     ; Untyped                   ;
+; C7_LOW                        ; 0                     ; Untyped                   ;
+; C8_LOW                        ; 0                     ; Untyped                   ;
+; C9_LOW                        ; 0                     ; Untyped                   ;
+; C0_INITIAL                    ; 0                     ; Untyped                   ;
+; C1_INITIAL                    ; 0                     ; Untyped                   ;
+; C2_INITIAL                    ; 0                     ; Untyped                   ;
+; C3_INITIAL                    ; 0                     ; Untyped                   ;
+; C4_INITIAL                    ; 0                     ; Untyped                   ;
+; C5_INITIAL                    ; 0                     ; Untyped                   ;
+; C6_INITIAL                    ; 0                     ; Untyped                   ;
+; C7_INITIAL                    ; 0                     ; Untyped                   ;
+; C8_INITIAL                    ; 0                     ; Untyped                   ;
+; C9_INITIAL                    ; 0                     ; Untyped                   ;
+; C0_MODE                       ; BYPASS                ; Untyped                   ;
+; C1_MODE                       ; BYPASS                ; Untyped                   ;
+; C2_MODE                       ; BYPASS                ; Untyped                   ;
+; C3_MODE                       ; BYPASS                ; Untyped                   ;
+; C4_MODE                       ; BYPASS                ; Untyped                   ;
+; C5_MODE                       ; BYPASS                ; Untyped                   ;
+; C6_MODE                       ; BYPASS                ; Untyped                   ;
+; C7_MODE                       ; BYPASS                ; Untyped                   ;
+; C8_MODE                       ; BYPASS                ; Untyped                   ;
+; C9_MODE                       ; BYPASS                ; Untyped                   ;
+; C0_PH                         ; 0                     ; Untyped                   ;
+; C1_PH                         ; 0                     ; Untyped                   ;
+; C2_PH                         ; 0                     ; Untyped                   ;
+; C3_PH                         ; 0                     ; Untyped                   ;
+; C4_PH                         ; 0                     ; Untyped                   ;
+; C5_PH                         ; 0                     ; Untyped                   ;
+; C6_PH                         ; 0                     ; Untyped                   ;
+; C7_PH                         ; 0                     ; Untyped                   ;
+; C8_PH                         ; 0                     ; Untyped                   ;
+; C9_PH                         ; 0                     ; Untyped                   ;
+; L0_HIGH                       ; 1                     ; Untyped                   ;
+; L1_HIGH                       ; 1                     ; Untyped                   ;
+; G0_HIGH                       ; 1                     ; Untyped                   ;
+; G1_HIGH                       ; 1                     ; Untyped                   ;
+; G2_HIGH                       ; 1                     ; Untyped                   ;
+; G3_HIGH                       ; 1                     ; Untyped                   ;
+; E0_HIGH                       ; 1                     ; Untyped                   ;
+; E1_HIGH                       ; 1                     ; Untyped                   ;
+; E2_HIGH                       ; 1                     ; Untyped                   ;
+; E3_HIGH                       ; 1                     ; Untyped                   ;
+; L0_LOW                        ; 1                     ; Untyped                   ;
+; L1_LOW                        ; 1                     ; Untyped                   ;
+; G0_LOW                        ; 1                     ; Untyped                   ;
+; G1_LOW                        ; 1                     ; Untyped                   ;
+; G2_LOW                        ; 1                     ; Untyped                   ;
+; G3_LOW                        ; 1                     ; Untyped                   ;
+; E0_LOW                        ; 1                     ; Untyped                   ;
+; E1_LOW                        ; 1                     ; Untyped                   ;
+; E2_LOW                        ; 1                     ; Untyped                   ;
+; E3_LOW                        ; 1                     ; Untyped                   ;
+; L0_INITIAL                    ; 1                     ; Untyped                   ;
+; L1_INITIAL                    ; 1                     ; Untyped                   ;
+; G0_INITIAL                    ; 1                     ; Untyped                   ;
+; G1_INITIAL                    ; 1                     ; Untyped                   ;
+; G2_INITIAL                    ; 1                     ; Untyped                   ;
+; G3_INITIAL                    ; 1                     ; Untyped                   ;
+; E0_INITIAL                    ; 1                     ; Untyped                   ;
+; E1_INITIAL                    ; 1                     ; Untyped                   ;
+; E2_INITIAL                    ; 1                     ; Untyped                   ;
+; E3_INITIAL                    ; 1                     ; Untyped                   ;
+; L0_MODE                       ; BYPASS                ; Untyped                   ;
+; L1_MODE                       ; BYPASS                ; Untyped                   ;
+; G0_MODE                       ; BYPASS                ; Untyped                   ;
+; G1_MODE                       ; BYPASS                ; Untyped                   ;
+; G2_MODE                       ; BYPASS                ; Untyped                   ;
+; G3_MODE                       ; BYPASS                ; Untyped                   ;
+; E0_MODE                       ; BYPASS                ; Untyped                   ;
+; E1_MODE                       ; BYPASS                ; Untyped                   ;
+; E2_MODE                       ; BYPASS                ; Untyped                   ;
+; E3_MODE                       ; BYPASS                ; Untyped                   ;
+; L0_PH                         ; 0                     ; Untyped                   ;
+; L1_PH                         ; 0                     ; Untyped                   ;
+; G0_PH                         ; 0                     ; Untyped                   ;
+; G1_PH                         ; 0                     ; Untyped                   ;
+; G2_PH                         ; 0                     ; Untyped                   ;
+; G3_PH                         ; 0                     ; Untyped                   ;
+; E0_PH                         ; 0                     ; Untyped                   ;
+; E1_PH                         ; 0                     ; Untyped                   ;
+; E2_PH                         ; 0                     ; Untyped                   ;
+; E3_PH                         ; 0                     ; Untyped                   ;
+; M_PH                          ; 0                     ; Untyped                   ;
+; C1_USE_CASC_IN                ; OFF                   ; Untyped                   ;
+; C2_USE_CASC_IN                ; OFF                   ; Untyped                   ;
+; C3_USE_CASC_IN                ; OFF                   ; Untyped                   ;
+; C4_USE_CASC_IN                ; OFF                   ; Untyped                   ;
+; C5_USE_CASC_IN                ; OFF                   ; Untyped                   ;
+; C6_USE_CASC_IN                ; OFF                   ; Untyped                   ;
+; C7_USE_CASC_IN                ; OFF                   ; Untyped                   ;
+; C8_USE_CASC_IN                ; OFF                   ; Untyped                   ;
+; C9_USE_CASC_IN                ; OFF                   ; Untyped                   ;
+; CLK0_COUNTER                  ; G0                    ; Untyped                   ;
+; CLK1_COUNTER                  ; G0                    ; Untyped                   ;
+; CLK2_COUNTER                  ; G0                    ; Untyped                   ;
+; CLK3_COUNTER                  ; G0                    ; Untyped                   ;
+; CLK4_COUNTER                  ; G0                    ; Untyped                   ;
+; CLK5_COUNTER                  ; G0                    ; Untyped                   ;
+; CLK6_COUNTER                  ; E0                    ; Untyped                   ;
+; CLK7_COUNTER                  ; E1                    ; Untyped                   ;
+; CLK8_COUNTER                  ; E2                    ; Untyped                   ;
+; CLK9_COUNTER                  ; E3                    ; Untyped                   ;
+; L0_TIME_DELAY                 ; 0                     ; Untyped                   ;
+; L1_TIME_DELAY                 ; 0                     ; Untyped                   ;
+; G0_TIME_DELAY                 ; 0                     ; Untyped                   ;
+; G1_TIME_DELAY                 ; 0                     ; Untyped                   ;
+; G2_TIME_DELAY                 ; 0                     ; Untyped                   ;
+; G3_TIME_DELAY                 ; 0                     ; Untyped                   ;
+; E0_TIME_DELAY                 ; 0                     ; Untyped                   ;
+; E1_TIME_DELAY                 ; 0                     ; Untyped                   ;
+; E2_TIME_DELAY                 ; 0                     ; Untyped                   ;
+; E3_TIME_DELAY                 ; 0                     ; Untyped                   ;
+; M_TIME_DELAY                  ; 0                     ; Untyped                   ;
+; N_TIME_DELAY                  ; 0                     ; Untyped                   ;
+; EXTCLK3_COUNTER               ; E3                    ; Untyped                   ;
+; EXTCLK2_COUNTER               ; E2                    ; Untyped                   ;
+; EXTCLK1_COUNTER               ; E1                    ; Untyped                   ;
+; EXTCLK0_COUNTER               ; E0                    ; Untyped                   ;
+; ENABLE0_COUNTER               ; L0                    ; Untyped                   ;
+; ENABLE1_COUNTER               ; L0                    ; Untyped                   ;
+; CHARGE_PUMP_CURRENT           ; 2                     ; Untyped                   ;
+; LOOP_FILTER_R                 ;  1.000000             ; Untyped                   ;
+; LOOP_FILTER_C                 ; 5                     ; Untyped                   ;
+; CHARGE_PUMP_CURRENT_BITS      ; 9999                  ; Untyped                   ;
+; LOOP_FILTER_R_BITS            ; 9999                  ; Untyped                   ;
+; LOOP_FILTER_C_BITS            ; 9999                  ; Untyped                   ;
+; VCO_POST_SCALE                ; 0                     ; Untyped                   ;
+; CLK2_OUTPUT_FREQUENCY         ; 0                     ; Untyped                   ;
+; CLK1_OUTPUT_FREQUENCY         ; 0                     ; Untyped                   ;
+; CLK0_OUTPUT_FREQUENCY         ; 0                     ; Untyped                   ;
+; INTENDED_DEVICE_FAMILY        ; MAX 10                ; Untyped                   ;
+; PORT_CLKENA0                  ; PORT_UNUSED           ; Untyped                   ;
+; PORT_CLKENA1                  ; PORT_UNUSED           ; Untyped                   ;
+; PORT_CLKENA2                  ; PORT_UNUSED           ; Untyped                   ;
+; PORT_CLKENA3                  ; PORT_UNUSED           ; Untyped                   ;
+; PORT_CLKENA4                  ; PORT_UNUSED           ; Untyped                   ;
+; PORT_CLKENA5                  ; PORT_UNUSED           ; Untyped                   ;
+; PORT_EXTCLKENA0               ; PORT_CONNECTIVITY     ; Untyped                   ;
+; PORT_EXTCLKENA1               ; PORT_CONNECTIVITY     ; Untyped                   ;
+; PORT_EXTCLKENA2               ; PORT_CONNECTIVITY     ; Untyped                   ;
+; PORT_EXTCLKENA3               ; PORT_CONNECTIVITY     ; Untyped                   ;
+; PORT_EXTCLK0                  ; PORT_UNUSED           ; Untyped                   ;
+; PORT_EXTCLK1                  ; PORT_UNUSED           ; Untyped                   ;
+; PORT_EXTCLK2                  ; PORT_UNUSED           ; Untyped                   ;
+; PORT_EXTCLK3                  ; PORT_UNUSED           ; Untyped                   ;
+; PORT_CLKBAD0                  ; PORT_UNUSED           ; Untyped                   ;
+; PORT_CLKBAD1                  ; PORT_UNUSED           ; Untyped                   ;
+; PORT_CLK0                     ; PORT_USED             ; Untyped                   ;
+; PORT_CLK1                     ; PORT_UNUSED           ; Untyped                   ;
+; PORT_CLK2                     ; PORT_UNUSED           ; Untyped                   ;
+; PORT_CLK3                     ; PORT_UNUSED           ; Untyped                   ;
+; PORT_CLK4                     ; PORT_UNUSED           ; Untyped                   ;
+; PORT_CLK5                     ; PORT_UNUSED           ; Untyped                   ;
+; PORT_CLK6                     ; PORT_UNUSED           ; Untyped                   ;
+; PORT_CLK7                     ; PORT_UNUSED           ; Untyped                   ;
+; PORT_CLK8                     ; PORT_UNUSED           ; Untyped                   ;
+; PORT_CLK9                     ; PORT_UNUSED           ; Untyped                   ;
+; PORT_SCANDATA                 ; PORT_UNUSED           ; Untyped                   ;
+; PORT_SCANDATAOUT              ; PORT_UNUSED           ; Untyped                   ;
+; PORT_SCANDONE                 ; PORT_UNUSED           ; Untyped                   ;
+; PORT_SCLKOUT1                 ; PORT_CONNECTIVITY     ; Untyped                   ;
+; PORT_SCLKOUT0                 ; PORT_CONNECTIVITY     ; Untyped                   ;
+; PORT_ACTIVECLOCK              ; PORT_UNUSED           ; Untyped                   ;
+; PORT_CLKLOSS                  ; PORT_UNUSED           ; Untyped                   ;
+; PORT_INCLK1                   ; PORT_UNUSED           ; Untyped                   ;
+; PORT_INCLK0                   ; PORT_USED             ; Untyped                   ;
+; PORT_FBIN                     ; PORT_UNUSED           ; Untyped                   ;
+; PORT_PLLENA                   ; PORT_UNUSED           ; Untyped                   ;
+; PORT_CLKSWITCH                ; PORT_UNUSED           ; Untyped                   ;
+; PORT_ARESET                   ; PORT_UNUSED           ; Untyped                   ;
+; PORT_PFDENA                   ; PORT_UNUSED           ; Untyped                   ;
+; PORT_SCANCLK                  ; PORT_UNUSED           ; Untyped                   ;
+; PORT_SCANACLR                 ; PORT_UNUSED           ; Untyped                   ;
+; PORT_SCANREAD                 ; PORT_UNUSED           ; Untyped                   ;
+; PORT_SCANWRITE                ; PORT_UNUSED           ; Untyped                   ;
+; PORT_ENABLE0                  ; PORT_CONNECTIVITY     ; Untyped                   ;
+; PORT_ENABLE1                  ; PORT_CONNECTIVITY     ; Untyped                   ;
+; PORT_LOCKED                   ; PORT_UNUSED           ; Untyped                   ;
+; PORT_CONFIGUPDATE             ; PORT_UNUSED           ; Untyped                   ;
+; PORT_FBOUT                    ; PORT_CONNECTIVITY     ; Untyped                   ;
+; PORT_PHASEDONE                ; PORT_UNUSED           ; Untyped                   ;
+; PORT_PHASESTEP                ; PORT_UNUSED           ; Untyped                   ;
+; PORT_PHASEUPDOWN              ; PORT_UNUSED           ; Untyped                   ;
+; PORT_SCANCLKENA               ; PORT_UNUSED           ; Untyped                   ;
+; PORT_PHASECOUNTERSELECT       ; PORT_UNUSED           ; Untyped                   ;
+; PORT_VCOOVERRANGE             ; PORT_CONNECTIVITY     ; Untyped                   ;
+; PORT_VCOUNDERRANGE            ; PORT_CONNECTIVITY     ; Untyped                   ;
+; M_TEST_SOURCE                 ; 5                     ; Untyped                   ;
+; C0_TEST_SOURCE                ; 5                     ; Untyped                   ;
+; C1_TEST_SOURCE                ; 5                     ; Untyped                   ;
+; C2_TEST_SOURCE                ; 5                     ; Untyped                   ;
+; C3_TEST_SOURCE                ; 5                     ; Untyped                   ;
+; C4_TEST_SOURCE                ; 5                     ; Untyped                   ;
+; C5_TEST_SOURCE                ; 5                     ; Untyped                   ;
+; C6_TEST_SOURCE                ; 5                     ; Untyped                   ;
+; C7_TEST_SOURCE                ; 5                     ; Untyped                   ;
+; C8_TEST_SOURCE                ; 5                     ; Untyped                   ;
+; C9_TEST_SOURCE                ; 5                     ; Untyped                   ;
+; CBXI_PARAMETER                ; pll_altpll            ; Untyped                   ;
+; VCO_FREQUENCY_CONTROL         ; AUTO                  ; Untyped                   ;
+; VCO_PHASE_SHIFT_STEP          ; 0                     ; Untyped                   ;
+; WIDTH_CLOCK                   ; 5                     ; Signed Integer            ;
+; WIDTH_PHASECOUNTERSELECT      ; 4                     ; Untyped                   ;
+; USING_FBMIMICBIDIR_PORT       ; OFF                   ; Untyped                   ;
+; DEVICE_FAMILY                 ; MAX 10                ; Untyped                   ;
+; SCAN_CHAIN_MIF_FILE           ; UNUSED                ; Untyped                   ;
+; SIM_GATE_LOCK_DEVICE_BEHAVIOR ; OFF                   ; Untyped                   ;
+; AUTO_CARRY_CHAINS             ; ON                    ; AUTO_CARRY                ;
+; IGNORE_CARRY_BUFFERS          ; OFF                   ; IGNORE_CARRY              ;
+; AUTO_CASCADE_CHAINS           ; ON                    ; AUTO_CASCADE              ;
+; IGNORE_CASCADE_BUFFERS        ; OFF                   ; IGNORE_CASCADE            ;
++-------------------------------+-----------------------+---------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DDS:OSC1_INST ;
++----------------+-------+-----------------------------------+
+; Parameter Name ; Value ; Type                              ;
++----------------+-------+-----------------------------------+
+; lut_bit_width  ; 8     ; Signed Integer                    ;
+; pa_bit_width   ; 32    ; Signed Integer                    ;
++----------------+-------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST ;
++----------------+-------+-------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                    ;
++----------------+-------+-------------------------------------------------------------------------+
+; divider        ; 512   ; Signed Integer                                                          ;
++----------------+-------+-------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST ;
++----------------+-------+-------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                        ;
++----------------+-------+-------------------------------------------------------------+
+; lut_bit_width  ; 8     ; Signed Integer                                              ;
+; pa_bit_width   ; 32    ; Signed Integer                                              ;
++----------------+-------+-------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DDS:OSC1_INST|phaseaccum_entity:PA_INST ;
++----------------+------------+--------------------------------------------------------+
+; Parameter Name ; Value      ; Type                                                   ;
++----------------+------------+--------------------------------------------------------+
+; max_length     ; 2147483647 ; Signed Integer                                         ;
+; lut_bit_width  ; 8          ; Signed Integer                                         ;
+; pa_bit_width   ; 32         ; Signed Integer                                         ;
++----------------+------------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DDS:OSC1_INST|sinelut_entity:SINE_INST ;
++----------------+-------+------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                       ;
++----------------+-------+------------------------------------------------------------+
+; lut_bit_width  ; 8     ; Signed Integer                                             ;
+; DATA_width     ; 16    ; Signed Integer                                             ;
++----------------+-------+------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DDS:OSC1_INST|pulselut_entity:PULSE_INST ;
++----------------+-------+--------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                         ;
++----------------+-------+--------------------------------------------------------------+
+; lut_bit_width  ; 8     ; Signed Integer                                               ;
+; DATA_width     ; 16    ; Signed Integer                                               ;
++----------------+-------+--------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DDS:OSC1_INST|sawlut_entity:SAW_INST ;
++----------------+-------+----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                     ;
++----------------+-------+----------------------------------------------------------+
+; lut_bit_width  ; 8     ; Signed Integer                                           ;
+; DATA_width     ; 16    ; Signed Integer                                           ;
++----------------+-------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DDS:OSC1_INST|trilut_entity:TRI_INST ;
++----------------+-------+----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                     ;
++----------------+-------+----------------------------------------------------------+
+; lut_bit_width  ; 8     ; Signed Integer                                           ;
+; DATA_width     ; 16    ; Signed Integer                                           ;
++----------------+-------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DDS:OSC2_INST ;
++----------------+-------+-----------------------------------+
+; Parameter Name ; Value ; Type                              ;
++----------------+-------+-----------------------------------+
+; lut_bit_width  ; 8     ; Signed Integer                    ;
+; pa_bit_width   ; 32    ; Signed Integer                    ;
++----------------+-------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DDS:OSC2_INST|sample_clk_gen_entity:SAMPLE_CLK_INST ;
++----------------+-------+-------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                    ;
++----------------+-------+-------------------------------------------------------------------------+
+; divider        ; 512   ; Signed Integer                                                          ;
++----------------+-------+-------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DDS:OSC2_INST|NOTE_2_PA:NOTE_TO_PA_INST ;
++----------------+-------+-------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                        ;
++----------------+-------+-------------------------------------------------------------+
+; lut_bit_width  ; 8     ; Signed Integer                                              ;
+; pa_bit_width   ; 32    ; Signed Integer                                              ;
++----------------+-------+-------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DDS:OSC2_INST|phaseaccum_entity:PA_INST ;
++----------------+------------+--------------------------------------------------------+
+; Parameter Name ; Value      ; Type                                                   ;
++----------------+------------+--------------------------------------------------------+
+; max_length     ; 2147483647 ; Signed Integer                                         ;
+; lut_bit_width  ; 8          ; Signed Integer                                         ;
+; pa_bit_width   ; 32         ; Signed Integer                                         ;
++----------------+------------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DDS:OSC2_INST|sinelut_entity:SINE_INST ;
++----------------+-------+------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                       ;
++----------------+-------+------------------------------------------------------------+
+; lut_bit_width  ; 8     ; Signed Integer                                             ;
+; DATA_width     ; 16    ; Signed Integer                                             ;
++----------------+-------+------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DDS:OSC2_INST|pulselut_entity:PULSE_INST ;
++----------------+-------+--------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                         ;
++----------------+-------+--------------------------------------------------------------+
+; lut_bit_width  ; 8     ; Signed Integer                                               ;
+; DATA_width     ; 16    ; Signed Integer                                               ;
++----------------+-------+--------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DDS:OSC2_INST|sawlut_entity:SAW_INST ;
++----------------+-------+----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                     ;
++----------------+-------+----------------------------------------------------------+
+; lut_bit_width  ; 8     ; Signed Integer                                           ;
+; DATA_width     ; 16    ; Signed Integer                                           ;
++----------------+-------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DDS:OSC2_INST|trilut_entity:TRI_INST ;
++----------------+-------+----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                     ;
++----------------+-------+----------------------------------------------------------+
+; lut_bit_width  ; 8     ; Signed Integer                                           ;
+; DATA_width     ; 16    ; Signed Integer                                           ;
++----------------+-------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: mixer_entity:MIXER_INST ;
++----------------+--------+--------------------------------------------+
+; Parameter Name ; Value  ; Type                                       ;
++----------------+--------+--------------------------------------------+
+; lut_bit_width  ; 8      ; Signed Integer                             ;
+; data_width     ; 16     ; Signed Integer                             ;
+; max_amplitude  ; 32767  ; Signed Integer                             ;
+; min_amplitude  ; -32767 ; Signed Integer                             ;
++----------------+--------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------+
+; altpll Parameter Settings by Entity Instance                         ;
++-------------------------------+--------------------------------------+
+; Name                          ; Value                                ;
++-------------------------------+--------------------------------------+
+; Number of entity instances    ; 1                                    ;
+; Entity Instance               ; pll:PLL_INST|altpll:altpll_component ;
+;     -- OPERATION_MODE         ; NORMAL                               ;
+;     -- PLL_TYPE               ; AUTO                                 ;
+;     -- PRIMARY_CLOCK          ; INCLK0                               ;
+;     -- INCLK0_INPUT_FREQUENCY ; 100000                               ;
+;     -- INCLK1_INPUT_FREQUENCY ; 0                                    ;
+;     -- VCO_MULTIPLY_BY        ; 0                                    ;
+;     -- VCO_DIVIDE_BY          ; 0                                    ;
++-------------------------------+--------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "DDS:OSC2_INST"                                                                       ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; a_clk ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 59                          ;
+; cycloneiii_ff         ; 431                         ;
+;     CLR               ; 167                         ;
+;     CLR SCLR          ; 95                          ;
+;     ENA               ; 90                          ;
+;     ENA CLR           ; 41                          ;
+;     ENA SCLR          ; 2                           ;
+;     plain             ; 36                          ;
+; cycloneiii_lcell_comb ; 1418                        ;
+;     arith             ; 175                         ;
+;         2 data inputs ; 88                          ;
+;         3 data inputs ; 87                          ;
+;     normal            ; 1243                        ;
+;         1 data inputs ; 17                          ;
+;         2 data inputs ; 61                          ;
+;         3 data inputs ; 106                         ;
+;         4 data inputs ; 1059                        ;
+; cycloneiii_pll        ; 1                           ;
+;                       ;                             ;
+; Max LUT depth         ; 6.90                        ;
+; Average LUT depth     ; 3.79                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:14     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+    Info: Processing started: Sun Jan 14 18:07:05 2018
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off synth -c synth
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file simulation/modelsim/synth_tb.vhd
+    Info (12022): Found design unit 1: synth_tb-synth_tb_arch File: D:/intelFPGA_lite/17.0/synth/simulation/modelsim/synth_tb.vhd Line: 13
+    Info (12023): Found entity 1: synth_tb File: D:/intelFPGA_lite/17.0/synth/simulation/modelsim/synth_tb.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file pll.vhd
+    Info (12022): Found design unit 1: pll-SYN File: D:/intelFPGA_lite/17.0/synth/pll.vhd Line: 52
+    Info (12023): Found entity 1: pll File: D:/intelFPGA_lite/17.0/synth/pll.vhd Line: 43
+Info (12021): Found 2 design units, including 1 entities, in source file trilut_entity.vhd
+    Info (12022): Found design unit 1: trilut_entity-behav File: D:/intelFPGA_lite/17.0/synth/trilut_entity.vhd Line: 22
+    Info (12023): Found entity 1: trilut_entity File: D:/intelFPGA_lite/17.0/synth/trilut_entity.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file synth.vhd
+    Info (12022): Found design unit 1: synth-synth_arch File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 28
+    Info (12023): Found entity 1: synth File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file sinelut_entity.vhd
+    Info (12022): Found design unit 1: sinelut_entity-behav File: D:/intelFPGA_lite/17.0/synth/sinelut_entity.vhd Line: 22
+    Info (12023): Found entity 1: sinelut_entity File: D:/intelFPGA_lite/17.0/synth/sinelut_entity.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file sawlut_entity.vhd
+    Info (12022): Found design unit 1: sawlut_entity-behav File: D:/intelFPGA_lite/17.0/synth/sawlut_entity.vhd Line: 23
+    Info (12023): Found entity 1: sawlut_entity File: D:/intelFPGA_lite/17.0/synth/sawlut_entity.vhd Line: 11
+Info (12021): Found 2 design units, including 1 entities, in source file sample_clk_gen_entity.vhd
+    Info (12022): Found design unit 1: sample_clk_gen_entity-behav File: D:/intelFPGA_lite/17.0/synth/sample_clk_gen_entity.vhd Line: 22
+    Info (12023): Found entity 1: sample_clk_gen_entity File: D:/intelFPGA_lite/17.0/synth/sample_clk_gen_entity.vhd Line: 13
+Info (12021): Found 2 design units, including 1 entities, in source file pulselut_entity.vhd
+    Info (12022): Found design unit 1: pulselut_entity-behav File: D:/intelFPGA_lite/17.0/synth/pulselut_entity.vhd Line: 24
+    Info (12023): Found entity 1: pulselut_entity File: D:/intelFPGA_lite/17.0/synth/pulselut_entity.vhd Line: 12
+Info (12021): Found 2 design units, including 1 entities, in source file phaseaccum_entity.vhd
+    Info (12022): Found design unit 1: phaseaccum_entity-behav File: D:/intelFPGA_lite/17.0/synth/phaseaccum_entity.vhd Line: 25
+    Info (12023): Found entity 1: phaseaccum_entity File: D:/intelFPGA_lite/17.0/synth/phaseaccum_entity.vhd Line: 12
+Info (12021): Found 2 design units, including 1 entities, in source file pb_debouncer.vhd
+    Info (12022): Found design unit 1: pb_debouncer-logic File: D:/intelFPGA_lite/17.0/synth/pb_debouncer.vhd Line: 19
+    Info (12023): Found entity 1: pb_debouncer File: D:/intelFPGA_lite/17.0/synth/pb_debouncer.vhd Line: 12
+Info (12021): Found 2 design units, including 1 entities, in source file osc_handler.vhd
+    Info (12022): Found design unit 1: osc_handler-osc_handler_arch File: D:/intelFPGA_lite/17.0/synth/osc_handler.vhd Line: 23
+    Info (12023): Found entity 1: osc_handler File: D:/intelFPGA_lite/17.0/synth/osc_handler.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file note_2_pa.vhd
+    Info (12022): Found design unit 1: NOTE_2_PA-behav File: D:/intelFPGA_lite/17.0/synth/note_2_pa.vhd Line: 23
+    Info (12023): Found entity 1: NOTE_2_PA File: D:/intelFPGA_lite/17.0/synth/note_2_pa.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file mixer_entity.vhd
+    Info (12022): Found design unit 1: mixer_entity-behav File: D:/intelFPGA_lite/17.0/synth/mixer_entity.vhd Line: 29
+    Info (12023): Found entity 1: mixer_entity File: D:/intelFPGA_lite/17.0/synth/mixer_entity.vhd Line: 11
+Info (12021): Found 2 design units, including 1 entities, in source file midi_decoder.vhd
+    Info (12022): Found design unit 1: midi_decoder-midi_decoder_arch File: D:/intelFPGA_lite/17.0/synth/midi_decoder.vhd Line: 24
+    Info (12023): Found entity 1: midi_decoder File: D:/intelFPGA_lite/17.0/synth/midi_decoder.vhd Line: 13
+Info (12021): Found 2 design units, including 1 entities, in source file hex2seg.vhd
+    Info (12022): Found design unit 1: hex2seg-hex2seg_arch File: D:/intelFPGA_lite/17.0/synth/hex2seg.vhd Line: 19
+    Info (12023): Found entity 1: hex2seg File: D:/intelFPGA_lite/17.0/synth/hex2seg.vhd Line: 11
+Info (12021): Found 2 design units, including 1 entities, in source file dds.vhd
+    Info (12022): Found design unit 1: DDS-behav File: D:/intelFPGA_lite/17.0/synth/dds.vhd Line: 28
+    Info (12023): Found entity 1: DDS File: D:/intelFPGA_lite/17.0/synth/dds.vhd Line: 13
+Info (12021): Found 2 design units, including 1 entities, in source file buttons.vhd
+    Info (12022): Found design unit 1: buttons-buttons_arch File: D:/intelFPGA_lite/17.0/synth/buttons.vhd Line: 27
+    Info (12023): Found entity 1: buttons File: D:/intelFPGA_lite/17.0/synth/buttons.vhd Line: 17
+Info (12127): Elaborating entity "synth" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at synth.vhd(32): object "as_clk1" assigned a value but never read File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 32
+Info (12128): Elaborating entity "pll" for hierarchy "pll:PLL_INST" File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 55
+Info (12128): Elaborating entity "altpll" for hierarchy "pll:PLL_INST|altpll:altpll_component" File: D:/intelFPGA_lite/17.0/synth/pll.vhd Line: 134
+Info (12130): Elaborated megafunction instantiation "pll:PLL_INST|altpll:altpll_component" File: D:/intelFPGA_lite/17.0/synth/pll.vhd Line: 134
+Info (12133): Instantiated megafunction "pll:PLL_INST|altpll:altpll_component" with the following parameter: File: D:/intelFPGA_lite/17.0/synth/pll.vhd Line: 134
+    Info (12134): Parameter "bandwidth_type" = "AUTO"
+    Info (12134): Parameter "clk0_divide_by" = "1"
+    Info (12134): Parameter "clk0_duty_cycle" = "50"
+    Info (12134): Parameter "clk0_multiply_by" = "5"
+    Info (12134): Parameter "clk0_phase_shift" = "0"
+    Info (12134): Parameter "compensate_clock" = "CLK0"
+    Info (12134): Parameter "inclk0_input_frequency" = "100000"
+    Info (12134): Parameter "intended_device_family" = "MAX 10"
+    Info (12134): Parameter "lpm_hint" = "CBX_MODULE_PREFIX=pll"
+    Info (12134): Parameter "lpm_type" = "altpll"
+    Info (12134): Parameter "operation_mode" = "NORMAL"
+    Info (12134): Parameter "pll_type" = "AUTO"
+    Info (12134): Parameter "port_activeclock" = "PORT_UNUSED"
+    Info (12134): Parameter "port_areset" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clkbad0" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clkbad1" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clkloss" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clkswitch" = "PORT_UNUSED"
+    Info (12134): Parameter "port_configupdate" = "PORT_UNUSED"
+    Info (12134): Parameter "port_fbin" = "PORT_UNUSED"
+    Info (12134): Parameter "port_inclk0" = "PORT_USED"
+    Info (12134): Parameter "port_inclk1" = "PORT_UNUSED"
+    Info (12134): Parameter "port_locked" = "PORT_UNUSED"
+    Info (12134): Parameter "port_pfdena" = "PORT_UNUSED"
+    Info (12134): Parameter "port_phasecounterselect" = "PORT_UNUSED"
+    Info (12134): Parameter "port_phasedone" = "PORT_UNUSED"
+    Info (12134): Parameter "port_phasestep" = "PORT_UNUSED"
+    Info (12134): Parameter "port_phaseupdown" = "PORT_UNUSED"
+    Info (12134): Parameter "port_pllena" = "PORT_UNUSED"
+    Info (12134): Parameter "port_scanaclr" = "PORT_UNUSED"
+    Info (12134): Parameter "port_scanclk" = "PORT_UNUSED"
+    Info (12134): Parameter "port_scanclkena" = "PORT_UNUSED"
+    Info (12134): Parameter "port_scandata" = "PORT_UNUSED"
+    Info (12134): Parameter "port_scandataout" = "PORT_UNUSED"
+    Info (12134): Parameter "port_scandone" = "PORT_UNUSED"
+    Info (12134): Parameter "port_scanread" = "PORT_UNUSED"
+    Info (12134): Parameter "port_scanwrite" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clk0" = "PORT_USED"
+    Info (12134): Parameter "port_clk1" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clk2" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clk3" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clk4" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clk5" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clkena0" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clkena1" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clkena2" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clkena3" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clkena4" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clkena5" = "PORT_UNUSED"
+    Info (12134): Parameter "port_extclk0" = "PORT_UNUSED"
+    Info (12134): Parameter "port_extclk1" = "PORT_UNUSED"
+    Info (12134): Parameter "port_extclk2" = "PORT_UNUSED"
+    Info (12134): Parameter "port_extclk3" = "PORT_UNUSED"
+    Info (12134): Parameter "width_clock" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/pll_altpll.v
+    Info (12023): Found entity 1: pll_altpll File: D:/intelFPGA_lite/17.0/synth/db/pll_altpll.v Line: 30
+Info (12128): Elaborating entity "pll_altpll" for hierarchy "pll:PLL_INST|altpll:altpll_component|pll_altpll:auto_generated" File: d:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altpll.tdf Line: 898
+Info (12128): Elaborating entity "pb_debouncer" for hierarchy "pb_debouncer:DEBOUNCER_INST_0" File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 61
+Info (12128): Elaborating entity "buttons" for hierarchy "buttons:BUTTONS_INST" File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 75
+Info (12128): Elaborating entity "hex2seg" for hierarchy "hex2seg:HEX2SEG_INST" File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 84
+Info (12128): Elaborating entity "midi_decoder" for hierarchy "midi_decoder:MIDI_DECODER_INST" File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 90
+Info (12128): Elaborating entity "osc_handler" for hierarchy "osc_handler:OSC_HANDLER_INST" File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 100
+Info (12128): Elaborating entity "DDS" for hierarchy "DDS:OSC1_INST" File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 112
+Info (12128): Elaborating entity "sample_clk_gen_entity" for hierarchy "DDS:OSC1_INST|sample_clk_gen_entity:SAMPLE_CLK_INST" File: D:/intelFPGA_lite/17.0/synth/dds.vhd Line: 118
+Warning (10492): VHDL Process Statement warning at sample_clk_gen_entity.vhd(43): signal "local_clk" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/intelFPGA_lite/17.0/synth/sample_clk_gen_entity.vhd Line: 43
+Warning (10492): VHDL Process Statement warning at sample_clk_gen_entity.vhd(44): signal "local_clk" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/intelFPGA_lite/17.0/synth/sample_clk_gen_entity.vhd Line: 44
+Info (12128): Elaborating entity "NOTE_2_PA" for hierarchy "DDS:OSC1_INST|NOTE_2_PA:NOTE_TO_PA_INST" File: D:/intelFPGA_lite/17.0/synth/dds.vhd Line: 119
+Info (12128): Elaborating entity "phaseaccum_entity" for hierarchy "DDS:OSC1_INST|phaseaccum_entity:PA_INST" File: D:/intelFPGA_lite/17.0/synth/dds.vhd Line: 120
+Info (12128): Elaborating entity "sinelut_entity" for hierarchy "DDS:OSC1_INST|sinelut_entity:SINE_INST" File: D:/intelFPGA_lite/17.0/synth/dds.vhd Line: 121
+Info (12128): Elaborating entity "pulselut_entity" for hierarchy "DDS:OSC1_INST|pulselut_entity:PULSE_INST" File: D:/intelFPGA_lite/17.0/synth/dds.vhd Line: 122
+Info (12128): Elaborating entity "sawlut_entity" for hierarchy "DDS:OSC1_INST|sawlut_entity:SAW_INST" File: D:/intelFPGA_lite/17.0/synth/dds.vhd Line: 123
+Info (12128): Elaborating entity "trilut_entity" for hierarchy "DDS:OSC1_INST|trilut_entity:TRI_INST" File: D:/intelFPGA_lite/17.0/synth/dds.vhd Line: 124
+Info (12128): Elaborating entity "mixer_entity" for hierarchy "mixer_entity:MIXER_INST" File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 138
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 12 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "MIDI_IN[0]" File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 20
+    Warning (15610): No output dependent on input pin "MIDI_IN[1]" File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 20
+    Warning (15610): No output dependent on input pin "MIDI_IN[2]" File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 20
+    Warning (15610): No output dependent on input pin "MIDI_IN[3]" File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 20
+    Warning (15610): No output dependent on input pin "MIDI_IN[4]" File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 20
+    Warning (15610): No output dependent on input pin "MIDI_IN[5]" File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 20
+    Warning (15610): No output dependent on input pin "MIDI_IN[6]" File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 20
+    Warning (15610): No output dependent on input pin "MIDI_IN[7]" File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 20
+    Warning (15610): No output dependent on input pin "MIDI_IN[16]" File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 20
+    Warning (15610): No output dependent on input pin "MIDI_IN[17]" File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 20
+    Warning (15610): No output dependent on input pin "MIDI_IN[18]" File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 20
+    Warning (15610): No output dependent on input pin "MIDI_IN[19]" File: D:/intelFPGA_lite/17.0/synth/synth.vhd Line: 20
+Info (21057): Implemented 1620 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 36 input pins
+    Info (21059): Implemented 23 output pins
+    Info (21061): Implemented 1560 logic cells
+    Info (21065): Implemented 1 PLLs
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 17 warnings
+    Info: Peak virtual memory: 683 megabytes
+    Info: Processing ended: Sun Jan 14 18:07:34 2018
+    Info: Elapsed time: 00:00:29
+    Info: Total CPU time (on all processors): 00:00:48
+
+

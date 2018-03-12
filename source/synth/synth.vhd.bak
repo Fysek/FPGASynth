@@ -1,0 +1,152 @@
+-------------------------------------------------------------------------------
+--
+-- Title       : synth
+-- Design      : synthesizer top
+-- Author      : Mateusz Dyrdół
+--
+-------------------------------------------------------------------------------
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.ALL;
+ENTITY synth IS
+	GENERIC(
+			lut_bit_width : integer := 8;
+			pa_bit_width : integer := 32
+	);
+	PORT(
+		CLK  			: IN std_logic;
+		RESET  			: IN std_logic;
+		BUTTON_L  		: IN std_logic;
+		BUTTON_R  		: IN std_logic;
+		MIDI_IN 		: IN std_logic_vector(23 downto 0);
+		AUDIO_DATA_OUT	: OUT std_logic_vector(15 downto 0);
+		HEX_DISPLAY		: OUT std_logic_vector(6 downto 0)
+	);
+		
+END ENTITY synth;
+
+ARCHITECTURE synth_arch OF synth IS
+
+signal clk_50 			: std_logic;
+signal as_clk0 			: std_logic;
+signal as_clk1 			: std_logic;
+signal s_note_on 		: std_logic_vector(7 downto 0)	;
+signal s_note_off 		: std_logic_vector(7 downto 0)	;
+signal s_note_osc_0		: std_logic_vector(7 downto 0)	;
+signal s_note_osc_1		: std_logic_vector(7 downto 0)	;
+signal s_enable_osc_0	: std_logic						;
+signal s_enable_osc_1	: std_logic						;
+
+signal btn_r 			: std_logic;
+signal btn_l 			: std_logic;
+signal out_function_btn : std_logic_vector(3 downto 0);
+
+signal	SI_DATA1		: std_logic_vector(15 downto 0);
+signal	SQ_DATA1    	: std_logic_vector(15 downto 0);
+signal	SA_DATA1    	: std_logic_vector(15 downto 0);
+signal	TR_DATA1    	: std_logic_vector(15 downto 0);
+signal	SI_DATA2    	: std_logic_vector(15 downto 0);
+signal  SQ_DATA2    	: std_logic_vector(15 downto 0);
+signal  SA_DATA2    	: std_logic_vector(15 downto 0);
+signal  TR_DATA2    	: std_logic_vector(15 downto 0);
+    
+BEGIN
+
+	PLL_INST : entity work.pll
+		port map(
+				inclk0			=>CLK,
+				c0				=>clk_50
+		);
+
+	DEBOUNCER_INST_0 : entity work.pb_debouncer 
+		port map(
+				CLK     		=> clk_50    ,
+				button  		=> BUTTON_L  ,
+				debounced_o  	=> btn_l     
+		);
+	
+	DEBOUNCER_INST_1 : entity work.pb_debouncer 
+		port map(
+				CLK     		=> clk_50     		,
+				button  		=> BUTTON_R   		,
+				debounced_o  	=> btn_r      
+		);
+	
+	BUTTONS_INST : entity work.buttons 
+		port map(
+				CLK       		=> clk_50	 		,	
+				reset     		=> reset 			,	
+				button_l 		=> btn_l			,
+				button_r 		=> btn_r			,
+				out_function 	=> out_function_btn     
+		);
+	
+	HEX2SEG_INST : entity work.hex2seg 
+		port map(
+				num      		=>out_function_btn	,
+				disp_seg 		=>HEX_DISPLAY
+		);
+		
+	MIDI_DECODER_INST : entity work.midi_decoder
+		port map(
+				clk    			=> clk_50	 		,
+				reset    		=> reset 			,
+				midi_in			=> MIDI_IN			,
+				note_on  		=> s_note_on		,
+				note_off		=> s_note_off			
+
+		);
+
+	OSC_HANDLER_INST : entity work.osc_handler
+		port map(
+				clk			 	=> clk_50	 	  	,
+		        reset		 	=> reset  			,
+		        note_on_osc  	=> s_note_on       	,
+		        note_off_osc 	=> s_note_off       ,
+		        note0		 	=> s_note_osc_0     ,
+		        note1		 	=> s_note_osc_1     ,
+		        enable0			=> s_enable_osc_0   ,
+		        enable1 	    => s_enable_osc_1
+		);
+  
+	OSC1_INST: entity work.dds 
+		port map(
+				clk				=>clk_50, 
+				reset			=>reset, 
+				NOTE_ON_DDS		=>s_note_osc_0, 
+				ENABLE			=>s_enable_osc_0, 
+				a_CLK			=>as_CLK0, 
+				SI_DATA			=>SI_DATA1, 
+				SQ_DATA			=>SQ_DATA1, 
+				SA_DATA			=>SA_DATA1, 
+				TR_DATA			=>TR_DATA1
+		);
+   
+	OSC2_INST: entity work.dds 
+		port map(
+				clk				=>clk_50, 
+				reset			=>reset, 
+				NOTE_ON_DDS		=>s_note_osc_1, 
+				ENABLE			=>s_enable_osc_1, 
+				a_CLK			=>as_CLK1, 
+				SI_DATA			=>SI_DATA2, 
+				SQ_DATA			=>SQ_DATA2, 
+				SA_DATA			=>SA_DATA2, 
+				TR_DATA			=>TR_DATA2
+		);
+  
+	MIXER_INST: entity work.mixer_entity 
+		port map(
+				a_clk			=>as_clk0,
+				reset			=>reset, 
+				DATA_SI_1		=>SI_DATA1, 
+				DATA_SQ_1		=>SQ_DATA1, 
+				DATA_SA_1		=>SA_DATA1, 
+				DATA_TR_1		=>TR_DATA1, 
+				DATA_SI_2		=>SI_DATA2,
+				DATA_SQ_2		=>SQ_DATA2,
+				DATA_SA_2		=>SA_DATA2,
+				DATA_TR_2		=>TR_DATA2,
+				WAV_SELECT		=>out_function_btn,
+				DATA_TO_AI		=>AUDIO_DATA_OUT
+		);
+END structure;

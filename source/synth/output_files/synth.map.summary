@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Sun Jan 14 18:07:34 2018
+Quartus Prime Version : 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+Revision Name : synth
+Top-level Entity Name : synth
+Family : MAX 10
+Total logic elements : 1,559
+    Total combinational functions : 1,412
+    Dedicated logic registers : 431
+Total registers : 431
+Total pins : 59
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 1
+UFM blocks : 0
+ADC blocks : 0

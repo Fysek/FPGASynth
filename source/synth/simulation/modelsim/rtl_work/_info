@@ -1,0 +1,753 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/intelFPGA_lite/17.0/synth/simulation/modelsim
+Ebuttons
+Z1 w1515248285
+Z2 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z3 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z4 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z5 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z6 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z7 8D:/intelFPGA_lite/17.0/synth/buttons.vhd
+Z8 FD:/intelFPGA_lite/17.0/synth/buttons.vhd
+l0
+L17
+VC[>c`O5DiU<eAV8RY_cKM2
+!s100 B>JjEozdNE6Ze9RlbE_3=0
+Z9 OV;C;10.5b;63
+31
+Z10 !s110 1515793101
+!i10b 1
+Z11 !s108 1515793101.000000
+Z12 !s90 -reportprogress|300|-93|-work|work|D:/intelFPGA_lite/17.0/synth/buttons.vhd|
+Z13 !s107 D:/intelFPGA_lite/17.0/synth/buttons.vhd|
+!i113 1
+Z14 o-93 -work work
+Z15 tExplicit 1 CvgOpt 0
+Abuttons_arch
+Z16 DEx4 work 12 pb_debouncer 0 22 DELY^^12i:ljPRiBL99g42
+R2
+R3
+R4
+R5
+R6
+Z17 DEx4 work 7 buttons 0 22 C[>c`O5DiU<eAV8RY_cKM2
+l36
+L27
+VJ0T3[EkdW2Z9F2?P[E?Fm1
+!s100 EUIGVAKfF4czo]B?]cBSz1
+R9
+31
+R10
+!i10b 1
+R11
+R12
+R13
+!i113 1
+R14
+R15
+Edds
+Z18 w1515247264
+R2
+R5
+R6
+R0
+Z19 8D:/intelFPGA_lite/17.0/synth/dds.vhd
+Z20 FD:/intelFPGA_lite/17.0/synth/dds.vhd
+l0
+L13
+VPF^CKb4A2Kloa14KG[C0O0
+!s100 hzHS4GfRY2@X1`6hAdPMM3
+R9
+31
+R10
+!i10b 1
+R11
+Z21 !s90 -reportprogress|300|-93|-work|work|D:/intelFPGA_lite/17.0/synth/dds.vhd|
+Z22 !s107 D:/intelFPGA_lite/17.0/synth/dds.vhd|
+!i113 1
+R14
+R15
+Abehav
+R2
+R5
+R6
+Z23 DEx4 work 3 dds 0 22 PF^CKb4A2Kloa14KG[C0O0
+l116
+L28
+V8PZb=F7:1RNU_5:MidNYn1
+!s100 d1Rf?<VMg_]Z@e=iR>@2`0
+R9
+31
+R10
+!i10b 1
+R11
+R21
+R22
+!i113 1
+R14
+R15
+Ehex2seg
+Z24 w1515248156
+R2
+R5
+R6
+R0
+Z25 8D:/intelFPGA_lite/17.0/synth/hex2seg.vhd
+Z26 FD:/intelFPGA_lite/17.0/synth/hex2seg.vhd
+l0
+L11
+VB=CeL<>ciURc;@bz>8NhN1
+!s100 efmbM3:FgI4ZVX6JN>e0:0
+R9
+31
+R10
+!i10b 1
+Z27 !s108 1515793100.000000
+Z28 !s90 -reportprogress|300|-93|-work|work|D:/intelFPGA_lite/17.0/synth/hex2seg.vhd|
+Z29 !s107 D:/intelFPGA_lite/17.0/synth/hex2seg.vhd|
+!i113 1
+R14
+R15
+Ahex2seg_arch
+R2
+R5
+R6
+Z30 DEx4 work 7 hex2seg 0 22 B=CeL<>ciURc;@bz>8NhN1
+l25
+L19
+VA:i14g<5E^Z7XLPlGhYKB2
+!s100 mg>:doMd[2a3zF>31SVbB1
+R9
+31
+R10
+!i10b 1
+R27
+R28
+R29
+!i113 1
+R14
+R15
+Emidi_decoder
+Z31 w1515247369
+R2
+R4
+R3
+R5
+R6
+R0
+Z32 8D:/intelFPGA_lite/17.0/synth/midi_decoder.vhd
+Z33 FD:/intelFPGA_lite/17.0/synth/midi_decoder.vhd
+l0
+L13
+V5iMF@2>f`=Y9`@aJXiFJW2
+!s100 oW0YS:3GzcLgbM1<Q3QUU1
+R9
+31
+Z34 !s110 1515793100
+!i10b 1
+R27
+Z35 !s90 -reportprogress|300|-93|-work|work|D:/intelFPGA_lite/17.0/synth/midi_decoder.vhd|
+Z36 !s107 D:/intelFPGA_lite/17.0/synth/midi_decoder.vhd|
+!i113 1
+R14
+R15
+Amidi_decoder_arch
+R2
+R4
+R3
+R5
+R6
+Z37 DEx4 work 12 midi_decoder 0 22 5iMF@2>f`=Y9`@aJXiFJW2
+l26
+L24
+VUzJS`@J^1kI;HZCgLNAHf2
+!s100 QVLh9F4Zh>Uf14M`a@@2c2
+R9
+31
+R34
+!i10b 1
+R27
+R35
+R36
+!i113 1
+R14
+R15
+Emixer_entity
+Z38 w1515247415
+R2
+R5
+R6
+R0
+Z39 8D:/intelFPGA_lite/17.0/synth/mixer_entity.vhd
+Z40 FD:/intelFPGA_lite/17.0/synth/mixer_entity.vhd
+l0
+L11
+V2JOQNgKH@_Qih094X4zhO1
+!s100 jXjWJ]KGJB8_f3gk^Uine0
+R9
+31
+R34
+!i10b 1
+R27
+Z41 !s90 -reportprogress|300|-93|-work|work|D:/intelFPGA_lite/17.0/synth/mixer_entity.vhd|
+Z42 !s107 D:/intelFPGA_lite/17.0/synth/mixer_entity.vhd|
+!i113 1
+R14
+R15
+Abehav
+R2
+R5
+R6
+Z43 DEx4 work 12 mixer_entity 0 22 2JOQNgKH@_Qih094X4zhO1
+l32
+L29
+VP3@o<YN:FoJfk<^Fl6`W30
+!s100 gdCZzJ_;AC:CAIl9dG`G61
+R9
+31
+R34
+!i10b 1
+R27
+R41
+R42
+!i113 1
+R14
+R15
+Enote_2_pa
+Z44 w1515247432
+R2
+R5
+R6
+R0
+Z45 8D:/intelFPGA_lite/17.0/synth/note_2_pa.vhd
+Z46 FD:/intelFPGA_lite/17.0/synth/note_2_pa.vhd
+l0
+L10
+Vo<1<dMMUfQ2JW4XaS:2zD1
+!s100 zD:;5?=[_Ph]b5aS:06BG2
+R9
+31
+R34
+!i10b 1
+R27
+Z47 !s90 -reportprogress|300|-93|-work|work|D:/intelFPGA_lite/17.0/synth/note_2_pa.vhd|
+Z48 !s107 D:/intelFPGA_lite/17.0/synth/note_2_pa.vhd|
+!i113 1
+R14
+R15
+Abehav
+R2
+R5
+R6
+DEx4 work 9 note_2_pa 0 22 o<1<dMMUfQ2JW4XaS:2zD1
+l27
+L23
+VR57G9b`m`5^UVoVFNzj_21
+!s100 kjJNfLOASX_Fb3OV^o<h73
+R9
+31
+R34
+!i10b 1
+R27
+R47
+R48
+!i113 1
+R14
+R15
+Eosc_handler
+Z49 w1515247453
+R2
+R5
+R6
+R0
+Z50 8D:/intelFPGA_lite/17.0/synth/osc_handler.vhd
+Z51 FD:/intelFPGA_lite/17.0/synth/osc_handler.vhd
+l0
+L10
+VaAA6]LKjSM<W_8bFQJ`:o3
+!s100 2HnS6RUQf_mFPAiKiSg_X0
+R9
+31
+R34
+!i10b 1
+R27
+Z52 !s90 -reportprogress|300|-93|-work|work|D:/intelFPGA_lite/17.0/synth/osc_handler.vhd|
+Z53 !s107 D:/intelFPGA_lite/17.0/synth/osc_handler.vhd|
+!i113 1
+R14
+R15
+Aosc_handler_arch
+R2
+R5
+R6
+Z54 DEx4 work 11 osc_handler 0 22 aAA6]LKjSM<W_8bFQJ`:o3
+l26
+L23
+Vem3FlLF8hdl6DaI7KibCP0
+!s100 PXkSo;`dldFge:7=Ze@lB2
+R9
+31
+R34
+!i10b 1
+R27
+R52
+R53
+!i113 1
+R14
+R15
+Epb_debouncer
+Z55 w1515247466
+R4
+R3
+R5
+R6
+R0
+Z56 8D:/intelFPGA_lite/17.0/synth/pb_debouncer.vhd
+Z57 FD:/intelFPGA_lite/17.0/synth/pb_debouncer.vhd
+l0
+L12
+VDELY^^12i:ljPRiBL99g42
+!s100 YC6=63=YjeePC`jY?XhS^1
+R9
+31
+R34
+!i10b 1
+R27
+Z58 !s90 -reportprogress|300|-93|-work|work|D:/intelFPGA_lite/17.0/synth/pb_debouncer.vhd|
+Z59 !s107 D:/intelFPGA_lite/17.0/synth/pb_debouncer.vhd|
+!i113 1
+R14
+R15
+Alogic
+R4
+R3
+R5
+R6
+R16
+l22
+L19
+Vf_DkQWTQmgNl[Ej>9[[Ui2
+!s100 bGCX]hU`NL?:LnVLil0Md3
+R9
+31
+R34
+!i10b 1
+R27
+R58
+R59
+!i113 1
+R14
+R15
+Ephaseaccum_entity
+Z60 w1515247478
+R2
+R5
+R6
+R0
+Z61 8D:/intelFPGA_lite/17.0/synth/phaseaccum_entity.vhd
+Z62 FD:/intelFPGA_lite/17.0/synth/phaseaccum_entity.vhd
+l0
+L12
+VE4=A`H0GS70CK1K18Lgdb1
+!s100 DgMYO<KeYA?cL@1jzE9B61
+R9
+31
+R34
+!i10b 1
+R27
+Z63 !s90 -reportprogress|300|-93|-work|work|D:/intelFPGA_lite/17.0/synth/phaseaccum_entity.vhd|
+Z64 !s107 D:/intelFPGA_lite/17.0/synth/phaseaccum_entity.vhd|
+!i113 1
+R14
+R15
+Abehav
+R2
+R5
+R6
+DEx4 work 17 phaseaccum_entity 0 22 E4=A`H0GS70CK1K18Lgdb1
+l27
+L25
+VFmN0:T>kH[EEzeScl]EdB2
+!s100 i]5jF=74kFEa3j2GD;;j30
+R9
+31
+R34
+!i10b 1
+R27
+R63
+R64
+!i113 1
+R14
+R15
+Epll
+Z65 w1515083243
+R5
+R6
+R0
+Z66 8D:/intelFPGA_lite/17.0/synth/pll.vhd
+Z67 FD:/intelFPGA_lite/17.0/synth/pll.vhd
+l0
+L43
+VgW:;d_[FbV`?`II2Ceei<2
+!s100 A<H4AY;Y0hFFY7nE=<T@T1
+R9
+31
+Z68 !s110 1515793098
+!i10b 1
+Z69 !s108 1515793098.000000
+Z70 !s90 -reportprogress|300|-93|-work|work|D:/intelFPGA_lite/17.0/synth/pll.vhd|
+Z71 !s107 D:/intelFPGA_lite/17.0/synth/pll.vhd|
+!i113 1
+R14
+R15
+Asyn
+R5
+R6
+Z72 DEx4 work 3 pll 0 22 gW:;d_[FbV`?`II2Ceei<2
+l126
+L52
+VHHX5j>dBmZ@<^Zb1bL0Qd1
+!s100 a7b^X:<i[Egf9YSBFUDG;3
+R9
+31
+R68
+!i10b 1
+R69
+R70
+R71
+!i113 1
+R14
+R15
+vpll_altpll
+R68
+!i10b 1
+!s100 ZmcjhdK[nHkM0z[UM6JE42
+I`kiNIlgGF=NnPzH=:a_=Q0
+VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1515248256
+8D:/intelFPGA_lite/17.0/synth/db/pll_altpll.v
+FD:/intelFPGA_lite/17.0/synth/db/pll_altpll.v
+L0 30
+OV;L;10.5b;63
+r1
+!s85 0
+31
+R69
+!s107 D:/intelFPGA_lite/17.0/synth/db/pll_altpll.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/intelFPGA_lite/17.0/synth/db|D:/intelFPGA_lite/17.0/synth/db/pll_altpll.v|
+!i113 1
+o-vlog01compat -work work
+!s92 -vlog01compat -work work +incdir+D:/intelFPGA_lite/17.0/synth/db
+tCvgOpt 0
+Epulselut_entity
+Z73 w1515247498
+R2
+R5
+R6
+R0
+Z74 8D:/intelFPGA_lite/17.0/synth/pulselut_entity.vhd
+Z75 FD:/intelFPGA_lite/17.0/synth/pulselut_entity.vhd
+l0
+L12
+Vi[HTQfVFibW@KEMV<FKbW0
+!s100 RW4jPAXGh[gm?k@UhbCCR0
+R9
+31
+R34
+!i10b 1
+Z76 !s108 1515793099.000000
+Z77 !s90 -reportprogress|300|-93|-work|work|D:/intelFPGA_lite/17.0/synth/pulselut_entity.vhd|
+Z78 !s107 D:/intelFPGA_lite/17.0/synth/pulselut_entity.vhd|
+!i113 1
+R14
+R15
+Abehav
+R2
+R5
+R6
+DEx4 work 15 pulselut_entity 0 22 i[HTQfVFibW@KEMV<FKbW0
+l30
+L24
+VLzoTzQnIOJXked:G`nZD^1
+!s100 gTRz=[fe;L[ERiTW=>O@c3
+R9
+31
+R34
+!i10b 1
+R76
+R77
+R78
+!i113 1
+R14
+R15
+Esample_clk_gen_entity
+Z79 w1515247511
+R2
+R5
+R6
+R0
+Z80 8D:/intelFPGA_lite/17.0/synth/sample_clk_gen_entity.vhd
+Z81 FD:/intelFPGA_lite/17.0/synth/sample_clk_gen_entity.vhd
+l0
+L13
+VLQQed:V]AeI;LM0KTdFPF0
+!s100 P02OhTf75>?RR01fde>0c0
+R9
+31
+Z82 !s110 1515793099
+!i10b 1
+R76
+Z83 !s90 -reportprogress|300|-93|-work|work|D:/intelFPGA_lite/17.0/synth/sample_clk_gen_entity.vhd|
+Z84 !s107 D:/intelFPGA_lite/17.0/synth/sample_clk_gen_entity.vhd|
+!i113 1
+R14
+R15
+Abehav
+R2
+R5
+R6
+DEx4 work 21 sample_clk_gen_entity 0 22 LQQed:V]AeI;LM0KTdFPF0
+l24
+L22
+V?FV>4=0=>7jHJU7Q2TDIC1
+!s100 8Y4XY9[ghbZk]8QCi4fVQ3
+R9
+31
+R82
+!i10b 1
+R76
+R83
+R84
+!i113 1
+R14
+R15
+Esawlut_entity
+Z85 w1515247522
+R2
+R5
+R6
+R0
+Z86 8D:/intelFPGA_lite/17.0/synth/sawlut_entity.vhd
+Z87 FD:/intelFPGA_lite/17.0/synth/sawlut_entity.vhd
+l0
+L11
+V0aW30SJP`eXUn>7m3OoH;0
+!s100 :4nTh3l3mKJczPT1[acOC0
+R9
+31
+R82
+!i10b 1
+R76
+Z88 !s90 -reportprogress|300|-93|-work|work|D:/intelFPGA_lite/17.0/synth/sawlut_entity.vhd|
+Z89 !s107 D:/intelFPGA_lite/17.0/synth/sawlut_entity.vhd|
+!i113 1
+R14
+R15
+Abehav
+R2
+R5
+R6
+DEx4 work 13 sawlut_entity 0 22 0aW30SJP`eXUn>7m3OoH;0
+l29
+L23
+V[lL2Yjd2HW=`ib5Ym2DRX3
+!s100 XJSjQiCF?bd0H@MbZW>782
+R9
+31
+R82
+!i10b 1
+R76
+R88
+R89
+!i113 1
+R14
+R15
+Esinelut_entity
+Z90 w1515247541
+R2
+R5
+R6
+R0
+Z91 8D:/intelFPGA_lite/17.0/synth/sinelut_entity.vhd
+Z92 FD:/intelFPGA_lite/17.0/synth/sinelut_entity.vhd
+l0
+L10
+V:XH[D7A@1L;:fKLZ`SYQf1
+!s100 4e87iDaaY`ZTQ2^ncCO>92
+R9
+31
+R82
+!i10b 1
+R76
+Z93 !s90 -reportprogress|300|-93|-work|work|D:/intelFPGA_lite/17.0/synth/sinelut_entity.vhd|
+Z94 !s107 D:/intelFPGA_lite/17.0/synth/sinelut_entity.vhd|
+!i113 1
+R14
+R15
+Abehav
+R2
+R5
+R6
+DEx4 work 14 sinelut_entity 0 22 :XH[D7A@1L;:fKLZ`SYQf1
+l29
+L22
+V=CJ[11QJ9=9B:QVKA1_2U2
+!s100 UiKW^RJ68jmN50EzA<:;92
+R9
+31
+R82
+!i10b 1
+R76
+R93
+R94
+!i113 1
+R14
+R15
+Esynth
+Z95 w1515368674
+R5
+R6
+R0
+Z96 8D:/intelFPGA_lite/17.0/synth/synth.vhd
+Z97 FD:/intelFPGA_lite/17.0/synth/synth.vhd
+l0
+L10
+Vo6If_f]WhmmCn?[I=L>CK2
+!s100 =f<>aD6?;<[NIJ13?R[4E0
+R9
+31
+R10
+!i10b 1
+R11
+Z98 !s90 -reportprogress|300|-93|-work|work|D:/intelFPGA_lite/17.0/synth/synth.vhd|
+Z99 !s107 D:/intelFPGA_lite/17.0/synth/synth.vhd|
+!i113 1
+R14
+R15
+Asynth_arch
+R43
+R23
+R54
+R37
+R30
+R2
+R17
+R4
+R3
+R16
+R72
+R5
+R6
+DEx4 work 5 synth 0 22 o6If_f]WhmmCn?[I=L>CK2
+l53
+L28
+VAiRWD10K^eKLincgUY<I70
+!s100 `OViPY7Gia68SzJE4g>kc0
+R9
+31
+R10
+!i10b 1
+R11
+R98
+R99
+!i113 1
+R14
+R15
+Esynth_tb
+Z100 w1515792888
+R3
+Z101 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
+R4
+R6
+R5
+R2
+R0
+Z102 8D:/intelFPGA_lite/17.0/synth/simulation/modelsim/synth_tb.vhd
+Z103 FD:/intelFPGA_lite/17.0/synth/simulation/modelsim/synth_tb.vhd
+l0
+L10
+V7?]2N7aW1XLP[f;ecjLdN3
+!s100 j73WOVY8melEoPAY^@QMA2
+R9
+31
+R10
+!i10b 1
+R11
+Z104 !s90 -reportprogress|300|-93|-work|work|D:/intelFPGA_lite/17.0/synth/simulation/modelsim/synth_tb.vhd|
+Z105 !s107 D:/intelFPGA_lite/17.0/synth/simulation/modelsim/synth_tb.vhd|
+!i113 1
+R14
+R15
+Asynth_tb_arch
+R3
+R101
+R4
+R6
+R5
+R2
+DEx4 work 8 synth_tb 0 22 7?]2N7aW1XLP[f;ecjLdN3
+l41
+L13
+VF5PT1VgCOOOk>jaUi@X>c3
+!s100 IJ9VQF3B?mnl>hUK9NOfO0
+R9
+31
+R10
+!i10b 1
+R11
+R104
+R105
+!i113 1
+R14
+R15
+Etrilut_entity
+Z106 w1515247554
+R2
+R5
+R6
+R0
+Z107 8D:/intelFPGA_lite/17.0/synth/trilut_entity.vhd
+Z108 FD:/intelFPGA_lite/17.0/synth/trilut_entity.vhd
+l0
+L10
+VY^;IX1710zkoD1=_bkDWO2
+!s100 AecSc3G@T;<kNOlQoaBgP3
+R9
+31
+R82
+!i10b 1
+R76
+Z109 !s90 -reportprogress|300|-93|-work|work|D:/intelFPGA_lite/17.0/synth/trilut_entity.vhd|
+Z110 !s107 D:/intelFPGA_lite/17.0/synth/trilut_entity.vhd|
+!i113 1
+R14
+R15
+Abehav
+R2
+R5
+R6
+DEx4 work 13 trilut_entity 0 22 Y^;IX1710zkoD1=_bkDWO2
+l28
+L22
+VUUKCQRJNm8kRAicClG1Mc3
+!s100 J`j:7;8OM>YDk;d_bJ^>e0
+R9
+31
+R82
+!i10b 1
+R76
+R109
+R110
+!i113 1
+R14
+R15
